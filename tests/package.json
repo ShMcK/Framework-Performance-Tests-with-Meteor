@@ -1,0 +1,16 @@
+{
+  "name": "performance-tests",
+  "version": "1.0.0",
+  "description": "Performance test comparisons using Meteor",
+  "main": "bechpress.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shawn McKay <me@shmck.com>",
+  "license": "ISC",
+  "dependencies": {
+    "benchpress": "^2.0.0-alpha.31",
+    "microtime": "^1.4.2",
+    "jasmine-core": "^2.3.4"
+  }
+}

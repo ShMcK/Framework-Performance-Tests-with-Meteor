@@ -1,0 +1,33 @@
+<section class="pt">
+  <div class="pt__options">
+
+    <div class="pt__options--counts">
+      <button ng-repeat="count in app.counts"
+              ng-click="app.setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{::count}}</button>
+    </div>
+
+    <button ng-click="app.runTest()" id="run"
+            class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
+    </button>
+    <button ng-click="app.reset()" id="reset"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+    </button>
+    <button ng-click="app.findWaldos()" id="find-waldos" class="mdl-button mdl-button--accent mdl-button--raised">Find
+      Waldos
+    </button>
+  </div>
+
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
+    <tr>
+      <th ng-repeat="number in app.numbers" class="mdl-data-table__cell--non-numeric">{{::number}}</th>
+    </tr>
+    </thead>
+    <tbody id="rows">
+    <tr ng-repeat="r in app.rows track by $index">
+      <td ng-repeat="name in r.names track by $index"
+          ng-class="{'waldo': app.isWaldo(name)}">{{::name}}</td>
+    </tr>
+    </tbody>
+  </table>
+</section>

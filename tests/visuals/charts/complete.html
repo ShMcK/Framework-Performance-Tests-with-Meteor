@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <!--[if lte IE 8]>
+        <script src="excanvas.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<section style="margin: 0 auto; text-align: center; padding: 50px;">
+  <div style="width: 75%">
+    <canvas id="renderLoadingChart" width="600" height="400"></canvas>
+  </div>
+  <br>
+
+  <div style="width: 75%">
+    <canvas id="renderPaintChart" width="600" height="400"></canvas>
+    <div style="display: inline;">
+      <span><span style="color: rgb(27, 133, 184); font-size: 1.5em;">■</span> Blaze 2.1.2</span>&nbsp;&nbsp;
+      <span><span style="color: rgb(195, 203, 113); font-size: 1.5em;">■</span>React 0.13.0</span>&nbsp;&nbsp;
+      <span><span style="color: rgb(90, 82, 85); font-size: 1.5em;">■</span>Angular 1.4.2</span>&nbsp;&nbsp;
+      <span><span style="color: rgb(174, 90, 65); font-size: 1.5em;">■</span>Angular 2.0.0-alpha.32</span>
+    </div>
+  </div>
+
+  <br>
+
+  <div style="width: 75%">
+    <canvas id="renderRepaintChart" width="600" height="400"></canvas>
+  </div>
+</section>
+
+<script>
+  var colors = {
+    blaze: '27, 133, 184',
+    angular: '90, 82, 85',
+    angular2: '174, 90, 65',
+    react: "195, 203, 113"
+  };
+
+  var lineOptions = {
+    showScale: true,
+    scaleShowGridLines: true,
+    scaleGridLineColor: "rgba(0,0,0,.05)",
+    scaleGridLineWidth: 1,
+    scaleShowHorizontalLines: true,
+    scaleShowVerticalLines: true,
+    scaleOverride: false,
+    scaleSteps: null,
+    scaleStepWidth: null,
+    scaleStartValue: null,
+    scaleLineColor: "rgba(0,0,0,.1)",
+    scaleLineWidth: 1,
+    scaleShowLabels: true,
+    scaleLabel: "<%=value%>",
+    scaleIntegersOnly: true,
+    scaleBeginAtZero: false,
+    scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    scaleFontSize: 12,
+    scaleFontStyle: "normal",
+    scaleFontColor: "#666",
+
+    bezierCurve: true,
+    bezierCurveTension: 0.4,
+
+    pointDot: true,
+    pointDotRadius: 4,
+    pointDotStrokeWidth: 1,
+    pointHitDetectionRadius: 20,
+
+    responsive: true,
+    maintainAspectRatio: true,
+
+    showTooltips: true,
+    customTooltips: false,
+    tooltipEvents: ["mousemove", "touchstart", "touchmove"],
+    tooltipFillColor: "rgba(0,0,0,0.8)",
+    tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    tooltipFontSize: 14,
+    tooltipTitleFontStyle: "bold",
+    tooltipFontColor: "#fff",
+    tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    tooltipYPadding: 6,
+    tooltipXPadding: 6,
+    tooltipCaretSize: 8,
+    tooltipCornerRadius: 6,
+    tooltipXOffset: 10,
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+    multiTooltipTemplate: "<%= value %>",
+
+    //datasetFill: true,
+    datasetStrokeWidth: 2,
+    datasetStroke: true,
+
+    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+  };
+
+  var loadingData = {
+    labels: ["Blaze 2.1.2", "React 0.13.0", "Angular 1.4.2", "Angular 2 alpha.32"],
+    datasets: [
+      {
+        label: "Blaze",
+        fillColor: ["rgba(" + colors.blaze + ",0.2)", "rgba(" + colors.react + ",0.2)", "rgba(" + colors.angular + ",0.2)", "rgba(" + colors.angular2 + ", 0.2)"],
+        strokeColor: ["rgba(" + colors.blaze + ",1)", "rgba(" + colors.react + ",1)", "rgba(" + colors.angular + ",1)", "rgba(" + colors.angular2 + ", 1)"],
+        highlightFill: "#fff",
+        highlightStroke: ["rgba(" + colors.blaze + ",1)", "rgba(" + colors.react + ",1)", "rgba(" + colors.angular + ",1)", "rgba(" + colors.angular2 + ", 1)"],
+        data: [896, 1053, 1215, 1325]
+      }
+    ]
+  };
+
+
+  var paintData = {
+    labels: ["10", "100", "500", "1000", "2000", "3000", "4000", "5000"],
+    datasets: [
+      {
+        label: "Blaze",
+        fillColor: "rgba(" + colors.blaze + ",0.2)",
+        strokeColor: "rgba(" + colors.blaze + ",1)",
+        pointColor: "rgba(" + colors.blaze + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.blaze + ",1)",
+        data: [38, 195, 805, 1420, 2680, 4730, 5340, 6280]
+      },
+      {
+        label: "React",
+        fillColor: "rgba(" + colors.react + ",0.2)",
+        strokeColor: "rgba(" + colors.react + ",1)",
+        pointColor: "rgba(" + colors.react + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.react + ",1)",
+        data: [53, 114, 343, 995, 1720, 2930, 3400, 4340]
+      },
+      {
+        label: "Angular 1.4",
+        fillColor: "rgba(" + colors.angular + ",0.2)",
+        strokeColor: "rgba(" + colors.angular + ",1)",
+        pointColor: "rgba(" + colors.angular + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.angular + ",1)",
+        data: [34, 173, 763, 1430, 2700, 4550, 6740, 9160]
+      },
+      {
+        label: "Angular 2",
+        fillColor: "rgba(" + colors.angular2 + ", 0.2)",
+        strokeColor: "rgba(" + colors.angular2 + ", 1)",
+        pointColor: "rgba(" + colors.angular2 + ", 1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.angular2 + ", 1)",
+        data: [24, 64, 182, 343, 604, 848, 1080, 1380]
+      }
+    ]
+  };
+
+  var repaintData = {
+    labels: ["10", "100", "500", "1000", "2000", "3000", "4000", "5000"],
+    datasets: [
+      {
+        label: "Blaze",
+        fillColor: "rgba(" + colors.blaze + ",0.2)",
+        strokeColor: "rgba(" + colors.blaze + ",1)",
+        pointColor: "rgba(" + colors.blaze + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.blaze + ",1)",
+        data: [9, 37, 209, 560, 830, 1100, 1220, 1520]
+      },
+      {
+        label: "React",
+        fillColor: "rgba(" + colors.react + ",0.2)",
+        strokeColor: "rgba(" + colors.react + ",1)",
+        pointColor: "rgba(" + colors.react + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.react + ",1)",
+        data: [16, 57, 186, 376, 1150, 1380, 1490, 1810]
+      },
+      {
+        label: "Angular 1.4.2",
+        fillColor: "rgba(" + colors.angular + ",0.2)",
+        strokeColor: "rgba(" + colors.angular + ",1)",
+        pointColor: "rgba(" + colors.angular + ",1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.angular + ",1)",
+        data: [5, 28, 95, 144, 536, 2360, 3950, 4670]
+      },
+      {
+        label: "Angular 2.0.0-alpha-32",
+        fillColor: "rgba(" + colors.angular2 + ", 0.2)",
+        strokeColor: "rgba(" + colors.angular2 + ", 1)",
+        pointColor: "rgba(" + colors.angular2 + ", 1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(" + colors.angular2 + ", 1)",
+        data: [2, 4, 13, 22, 38, 62, 71, 93]
+      }
+    ]
+  };
+
+  var loadingChart = document.getElementById("renderLoadingChart").getContext("2d");
+  var renderChart = new Chart(loadingChart).Bar(loadingData, {responsive: true});
+
+  var paintChart = document.getElementById("renderPaintChart").getContext("2d");
+  var renderChart2 = new Chart(paintChart).Line(paintData, lineOptions);
+
+  var repaintChart = document.getElementById("renderRepaintChart").getContext("2d");
+  var renderChart3 = new Chart(repaintChart).Line(repaintData, lineOptions);
+
+</script>
+</body>
+</html>

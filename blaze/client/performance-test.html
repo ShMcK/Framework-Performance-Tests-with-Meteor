@@ -1,0 +1,55 @@
+<head>
+  <title>Perf Tests</title>
+</head>
+
+<body>
+<header>
+  <h3>Blaze 2.1.2</h3>
+</header>
+
+{{> performanceTest }}
+
+</body>
+
+<template name="performanceTest">
+  <section class="pt">
+    <div class="pt__options">
+
+      <div class="pt__options--counts">
+        {{#each counts}}
+          <button class="mdl-button count-selector" id="count-{{this}}" value="{{this}}">{{this}}</button>
+        {{/each}}
+      </div>
+
+      <button id="run"
+              class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
+      </button>
+      <button id="reset"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+      </button>
+      <button id="find-waldos" class="mdl-button mdl-button--accent mdl-button--raised">Find
+        Waldos
+      </button>
+    </div>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+      <tr>
+        {{#each numbers}}
+          <th class="mdl-data-table__cell--non-numeric">{{this}}</th>
+        {{/each}}
+      </tr>
+      </thead>
+
+      <tbody id="rows">
+      {{#each rows}}
+        <tr>
+          {{#each names}}
+            <td {{isWaldo}}>{{this}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </section>
+</template>

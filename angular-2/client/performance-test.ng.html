@@ -1,0 +1,37 @@
+<!-- Select # of Docs 500 | 1000 | 2500 | 5000 -->
+<section class="pt">
+  <div class="pt__options">
+
+    <div class="pt__options--counts">
+      <button *ng-for="#count of counts"
+              (click)="setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{count}}</button>
+    </div>
+
+    <button (click)="run()" id="run"
+            class="mdl-button mdl-button--primary mdl-button--raised">Run
+    </button>
+
+    <button (click)="reset()" id="reset"
+            class="mdl-button mdl-button--raised">Reset
+    </button>
+
+    <button (click)="findWaldos()" id="find-waldos" class="mdl-button mdl-button--accent mdl-button--raised">Find
+      Waldos
+    </button>
+  </div>
+
+  <table class="mdl-data-table mdl-js-data-table">
+    <thead>
+    <tr>
+      <th *ng-for="#number of numbers" class="mdl-data-table__cell--non-numeric">{{number}}</th>
+    </tr>
+    </thead>
+
+    <tbody id="rows">
+    <tr *ng-for="#item of items; #i = index">
+      <td *ng-for="#name of item.names" [class.waldo]="isWaldo(name)">{{name}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+</section>
