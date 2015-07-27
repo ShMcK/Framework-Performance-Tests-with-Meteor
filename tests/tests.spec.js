@@ -1,7 +1,6 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  IS_ANGULAR_2: false,
   SAMPLE_SIZE: 20, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
   COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000],
@@ -9,6 +8,8 @@ var TEST = {
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNT * TEST.TIMEOUT_INTERVAL_VAR;
+
+// emitter.setMaxListeners()
 
 var runner = new benchpress.Runner([
   benchpress.SeleniumWebDriverAdapter.PROTRACTOR_BINDINGS,
@@ -22,7 +23,7 @@ describe('Performance Tests', function () {
 
   function testPaintingTime(count) {
     it('time to paint ' + count + ' rows', function (done) {
-      browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
+      browser.ignoreSynchronization = true;
       browser.get(TEST.ADDRESS);
       runner.sample({
         id: 'load-rows',
@@ -40,7 +41,7 @@ describe('Performance Tests', function () {
 
   function testFindWaldos(count) {
     it('time to find ' + count + ' Waldos', function (done) {
-      browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
+      browser.ignoreSynchronization = true;
       browser.get(TEST.ADDRESS);
       runner.sample({
         id: 'find-waldos',
