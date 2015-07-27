@@ -19,7 +19,8 @@ exports.config = {
   },
 
   specs: [
-    './benchpress.spec.js'
+    './tests.spec.js' // run all tests for a framework
+    //'./test.spec.js' // run a specific test for a framework
   ],
   framework: 'jasmine2',
 

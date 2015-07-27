@@ -23,7 +23,7 @@
         meteor
 
        
-3. Set the settings for your test in `benchpress.spec.js`
+3. Set the settings for your test in `test.spec.js`
    
         var TEST = {
           isAngular1: false,

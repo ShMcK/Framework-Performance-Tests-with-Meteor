@@ -1,31 +1,29 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  isAngular1: false,
-  sampleSize: 20, // number of times the test runs
-  address: 'http://localhost:3000/',
-  count: 100 // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
+  IS_ANGULAR_2: false,
+  SAMPLE_SIZE: 20, // number of times the test runs
+  ADDRESS: 'http://localhost:3000/',
+  COUNT: 100, // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
+  TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
 };
 
-// increase async time limit to 20 seconds
-if (TEST.count > 100) {
-  jasmine.getEnv().defaultTimeoutInterval = 60000;
-}
+jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNT * TEST.TIMEOUT_INTERVAL_VAR;
 
 var runner = new benchpress.Runner([
   benchpress.SeleniumWebDriverAdapter.PROTRACTOR_BINDINGS,
   benchpress.Validator.bindTo(benchpress.RegressionSlopeValidator),
-  benchpress.bind(benchpress.RegressionSlopeValidator.SAMPLE_SIZE).toValue(TEST.sampleSize),
+  benchpress.bind(benchpress.RegressionSlopeValidator.SAMPLE_SIZE).toValue(TEST.SAMPLE_SIZE),
   benchpress.bind(benchpress.RegressionSlopeValidator.METRIC).toValue('scriptTime'),
   benchpress.bind(benchpress.Options.FORCE_GC).toValue(true)
 ]);
 
-describe('Perf', function () {
+describe('Performance Test', function () {
 
-  it('paints the DOM with rows', function (done) {
+  it('time to paint ' + TEST.COUNT + ' rows', function (done) {
 
-    browser.ignoreSynchronization = TEST.isAngular1;
-    browser.get(TEST.address);
+    browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
+    browser.get(TEST.ADDRESS);
 
     runner.sample({
       id: 'load-rows',
@@ -33,20 +31,20 @@ describe('Perf', function () {
         return $('#reset').click();
       },
       execute: function () {
-        $('#count-' + TEST.count).click();
+        $('#count-' + TEST.COUNT).click();
         return $('#run').click();
       }
     }).then(done, done.fail);
   });
 
-  it('re-paints the rows', function (done) {
-    browser.ignoreSynchronization = TEST.isAngular1;
-    browser.get(TEST.address);
+  it('time to find ' + TEST.COUNT + ' Waldos', function (done) {
+    browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
+    browser.get(TEST.ADDRESS);
     runner.sample({
       id: 'find-waldos',
       prepare: function () {
         $('#reset').click();
-        $('#count-' + TEST.count).click();
+        $('#count-' + TEST.COUNT).click();
         return $('#run').click();
       },
       execute: function () {

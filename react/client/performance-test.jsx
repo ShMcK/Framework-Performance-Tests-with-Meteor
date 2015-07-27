@@ -40,8 +40,9 @@ App = React.createClass({
   },
   renderCounts: function () {
     return this.getCounts().map((count) => {
+      var countId = "count-" + count;
       return (<button key={count} onClick={()=>{this._changeLimit(count)}} className="mdl-button"
-                      id="count-{count}">{count}</button>);
+                      id={countId}>{count}</button>);
     });
   },
   getNumbers: function () {
