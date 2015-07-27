@@ -1,9 +1,11 @@
 App = React.createClass({
-  mixins: [ReactMeteor.Mixin],
+  mixins: [ReactMeteor.Mixin, ReactMeteorData],
   startMeteorSubscriptions: function () {
     Meteor.subscribe('items');
   },
-  getMeteorState: function () {
+  getMeteorData() {
+    var handle = Meteor.subscribe('items');
+
     return {
       items: () => {
         if (this.state.running) {
@@ -12,7 +14,7 @@ App = React.createClass({
           return [];
         }
       }
-    }
+    };
   },
   getInitialState: function () {
     return {
@@ -22,7 +24,7 @@ App = React.createClass({
     }
   },
   renderRows: function () {
-    return this.state.items().map((row) => {
+    return this.data.items().map((row) => {
       var names = row.names.map((name, index) => {
         var classString;
         if (this.state.waldoFilter && name == 'Waldo') {
@@ -55,14 +57,13 @@ App = React.createClass({
       return {running: true};
     });
   },
+  _reset: function () {
+    this.setState((prevState, currentProps) => {
+      return {waldoFilter: false, running: false};
+    })
+  },
   _changeLimit: function (newLimit) {
     this.setState({running: false, limit: newLimit});
-    // reset
-    if (newLimit === 0) {
-      this.setState((prevState, currentProps) => {
-        return {waldoFilter: false};
-      })
-    }
   },
   _findWaldos: function () {
     this.setState((prevState, currentProps) => {
@@ -79,7 +80,7 @@ App = React.createClass({
         <button id="run" onClick={this._run}
                 className="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
         </button>
-        <button id="reset" onClick={() => {this._changeLimit(0)}}
+        <button id="reset" onClick={this._reset}
                 className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
         </button>
         <button id="find-waldos" onClick={this._findWaldos}

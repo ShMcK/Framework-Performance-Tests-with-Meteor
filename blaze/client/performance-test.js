@@ -32,7 +32,6 @@ Template.performanceTest.events({
     Session.set('limit', value);
   },
   'click #reset': function () {
-    Session.set('limit', 0);
     Session.set('running', false);
     Session.set('waldoFilter', false);
   },
