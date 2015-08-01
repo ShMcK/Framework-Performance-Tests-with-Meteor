@@ -1,0 +1,69 @@
+<head>
+  <title>Waldo Finder</title>
+</head>
+
+<body>
+<header>
+  <h3>Blaze 2.1.2</h3>
+</header>
+
+{{> performanceTest }}
+
+</body>
+
+<template name="performanceTest">
+  <section class="pt">
+    <div class="pt__options">
+
+      <div class="pt__options--counts">
+        {{#each counts}}
+          <button class="mdl-button count-selector" id="count-{{this}}" value="{{this}}">{{this}}</button>
+        {{/each}}
+      </div>
+
+      <button id="run" value="H"
+              class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run HTML
+      </button>
+      <button id="run" value="T"
+              class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">Run Template
+      </button>
+      <button id="reset"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+      </button>
+
+    </div>
+
+    <div class="mdl-grid">
+      <div class="test-list mdl-cell mdl-cell--3-col">
+        <h5 class="title">HTML List</h5>
+
+        <p>Component-free loop. Just HTML.</p>
+        <ul>
+          {{#each hListArray }}
+            <li>
+              <span>Item</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="test-list mdl-cell mdl-cell--3-col">
+        <h5 class="title">Template List</h5>
+
+        <p>Template List</p>
+        <ul>
+          {{#each tListArray }}
+            {{> listItem}}
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</template>
+
+<template name="listItem">
+  <li>
+    <span>Item</span>
+  </li>
+</template>
