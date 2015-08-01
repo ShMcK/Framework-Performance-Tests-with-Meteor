@@ -1,21 +1,22 @@
+<!-- Select # of Docs 500 | 1000 | 2500 | 5000 -->
 <section class="pt">
   <div class="pt__options">
 
     <div class="pt__options--counts">
-      <button ng-repeat="count in app.counts"
-              ng-click="app.setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{::count}}</button>
+      <button *ng-for="#count of counts"
+              (click)="setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{count}}</button>
     </div>
 
-    <button ng-click="app.runList()" id="run-list"
+    <button (click)="runList()" id="run-list"
             class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run List
     </button>
-    <button ng-click="app.runTComponents()" id="run-nested" class="mdl-button mdl-button--accent mdl-button--raised">Run
+    <button (click)="runTComponents()" id="run-nested" class="mdl-button mdl-button--accent mdl-button--raised">Run
       Template Components
     </button>
-    <button ng-click="app.runTUComponents()" id="run-list"
+    <button (click)="runTUComponents()" id="run-list"
             class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">TemplateUrl Components
     </button>
-    <button ng-click="app.reset()" id="reset"
+    <button (click)="reset()" id="reset"
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
     </button>
   </div>
@@ -26,7 +27,7 @@
 
       <p>Component-free loop. Just HTML.</p>
       <ul>
-        <li ng-repeat="c in app.runListArray track by $index">
+        <li *ng-for="#c of runListArray">
           <span>Item</span>
         </li>
       </ul>
@@ -36,7 +37,7 @@
 
       <p>Simple components with template</p>
       <ul>
-        <li ng-repeat="c in app.runTComponentArray track by $index">
+        <li *ng-for="#c of runTComponentArray">
           <t-component></t-component>
         </li>
       </ul>
@@ -46,10 +47,11 @@
 
       <p>Simple components with linked template</p>
       <ul>
-        <li ng-repeat="c in app.runTUComponentArray track by $index">
+        <li *ng-for="#c of runTUComponentArray">
           <t-u-component></t-u-component>
         </li>
       </ul>
     </div>
   </div>
+
 </section>

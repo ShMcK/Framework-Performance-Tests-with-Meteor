@@ -1,6 +1,30 @@
 angular.module('app')
+  .directive('tComponent', templateComponent)
+  .directive('tUComponent', templateUrlComponent)
   .directive('performanceTest', performanceTest);
 
+/**
+ * Template Component
+ */
+function templateComponent() {
+  return {
+    template: '<span>Item</span>'
+  };
+}
+
+/**
+ * Template URL Component
+ */
+function templateUrlComponent() {
+  return {
+    // find way to break cycle, like iterators
+    templateUrl: 'client/component.ng.html'
+  }
+}
+
+/**
+ * Main Component
+ */
 function performanceTest() {
   return {
     templateUrl: 'client/performance-test.ng.html',
@@ -16,8 +40,8 @@ function performanceTestCtrl() {
     runListArray: [],
     runTComponentArray: [],
     runTUComponentArray: [],
-    setCountValue: function (selectedCount) {
-      this.count = selectedCount;
+    setCountValue: function (value) {
+      this.count = value;
     },
     runList: function () {
       this.runListArray = new Array(this.count);
