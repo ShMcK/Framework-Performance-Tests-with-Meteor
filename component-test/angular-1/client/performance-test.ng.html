@@ -1,0 +1,55 @@
+<section class="pt">
+  <div class="pt__options">
+
+    <div class="pt__options--counts">
+      <button ng-repeat="count in app.counts"
+              ng-click="app.setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{::count}}</button>
+    </div>
+
+    <button ng-click="app.runList()" id="run-list"
+            class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run List
+    </button>
+    <button ng-click="app.runTComponents()" id="run-nested" class="mdl-button mdl-button--accent mdl-button--raised">Run
+      Template Components
+    </button>
+    <button ng-click="app.runTUComponents()" id="run-list"
+            class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">TemplateUrl Components
+    </button>
+    <button ng-click="app.reset()" id="reset"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+    </button>
+  </div>
+
+  <div class="mdl-grid">
+    <div class="test-list mdl-cell mdl-cell--3-col">
+      <h5 class="title">HTML List</h5>
+
+      <p>Component-free loop. Just HTML.</p>
+      <ul>
+        <li ng-repeat="c in app.runListArray track by $index">
+          <span>Component</span>
+        </li>
+      </ul>
+    </div>
+    <div class="test-component mdl-cell mdl-cell--3-col">
+      <h5 class="title">Template Components</h5>
+
+      <p>Simple components with template</p>
+      <ul>
+        <li ng-repeat="c in app.runTComponentArray track by $index">
+          <t-component></t-component>
+        </li>
+      </ul>
+    </div>
+    <div class="test-component mdl-cell mdl-cell--3-col">
+      <h5 class="title">Template Url Components</h5>
+
+      <p>Simple components with linked template</p>
+      <ul>
+        <li ng-repeat="c in app.runTUComponentArray track by $index">
+          <t-u-component></t-u-component>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

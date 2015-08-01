@@ -18,6 +18,6 @@ See [Comparing Performance of Blaze, React, Angular-Meteor & Angular 2 with Mete
 
 ## Components (WIP)
 
-* Lists
-* Components
-* Nested Components
+* HTML Lists
+* Components with template
+* Component with templateUrl
