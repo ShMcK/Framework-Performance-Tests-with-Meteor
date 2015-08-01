@@ -18,3 +18,8 @@ Copy Folders to `blaze` directory.
 Run
 
     meteor
+
+
+Perf Improvements
+
+    - Removed one time bindings

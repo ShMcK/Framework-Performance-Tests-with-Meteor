@@ -3,7 +3,7 @@ var benchpress = require('benchpress');
 var TEST = {
   SAMPLE_SIZE: 20, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000],
+  COUNTS: [10, 100, 500, 1000], //, 2000, 3000, 4000, 5000
   TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
 };
 

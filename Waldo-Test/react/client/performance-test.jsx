@@ -106,3 +106,10 @@ App = React.createClass({
 Meteor.startup(function () {
   React.render(<App />, document.getElementById("app-target"));
 });
+
+/**
+ * Memory Profiling
+ * https://github.com/paulirish/memory-stats.js/tree/master
+ */
+// open /Applications/Google\ Chrome.app --args --enable-precise-memory-info
+(function(){var script=document.createElement('script');script.src='https://rawgit.com/paulirish/memory-stats.js/master/bookmarklet.js';document.head.appendChild(script);})()
