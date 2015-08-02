@@ -1,3 +1,5 @@
+var countsArray = [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+
 Component = React.createClass({
   render: function () {
     return (<li><span>Item</span></li>);
@@ -28,7 +30,7 @@ App = React.createClass({
     return (<span>Item</span>);
   },
   getCounts: function () {
-    return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+    return countsArray;
   },
   renderCounts: function () {
     return this.getCounts().map((count) => {

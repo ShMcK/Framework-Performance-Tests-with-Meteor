@@ -1,5 +1,6 @@
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 declare var Items:any;
+var countsArray = [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
 
 /**
  * Template Component
@@ -44,7 +45,7 @@ class PerformanceTests {
   runTUComponentArray;
 
   constructor() {
-    this.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+    this.counts = countsArray;
     this.count = 0;
     this.runListArray = [];
     this.runTComponentArray = [];

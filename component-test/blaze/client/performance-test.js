@@ -1,6 +1,7 @@
 Session.setDefault('count', 0);
 Session.setDefault('runH', false); // html list
 Session.setDefault('runT', false); // template list
+var countsArray = [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
 
 function arrayify(list, n) {
   if (Session.get(list)) {
@@ -16,7 +17,7 @@ function arrayify(list, n) {
 
 Template.performanceTest.helpers({
   'counts': function () {
-    return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+    return countsArray;
   },
   'hListArray': function () {
     return arrayify('runH', parseInt(Session.get('count')));

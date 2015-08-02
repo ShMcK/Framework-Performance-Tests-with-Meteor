@@ -1,3 +1,5 @@
+var countsArray = [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+
 angular.module('app')
   .directive('tComponent', templateComponent)
   .directive('tUComponent', templateUrlComponent)
@@ -35,7 +37,7 @@ function performanceTest() {
 
 function performanceTestCtrl() {
   angular.extend(this, {
-    counts: [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+    counts: countsArray,
     count: 0,
     runListArray: [],
     runTComponentArray: [],
