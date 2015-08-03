@@ -8,3 +8,5 @@ meteor-platform
 
 # Styles
 spectrum:material-design-lite
+
+reactive-dict

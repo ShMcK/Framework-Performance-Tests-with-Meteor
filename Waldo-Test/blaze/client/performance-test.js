@@ -1,12 +1,17 @@
-Session.setDefault('limit', 1);
-Session.setDefault('running', false);
-Session.setDefault('waldoFilter', false);
 Meteor.subscribe('items');
+
+Template.performanceTest.created = function () {
+  this.state = new ReactiveDict();
+  this.state.set('limit', 0);
+  this.state.set('running', false);
+  this.state.set('waldoFilter', false);
+};
 
 Template.performanceTest.helpers({
   'rows': function () {
-    if (Session.get('running')) {
-      return Items.find({}, {limit: parseInt(Session.get('limit'))});
+    var template = Template.instance();
+    if (template.state.get('running')) {
+      return Items.find({}, {limit: parseInt(template.state.get('limit'))});
     } else {
       return null;
     }
@@ -18,7 +23,7 @@ Template.performanceTest.helpers({
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   },
   'isWaldo': function () {
-    if (Session.get('waldoFilter') && this == 'Waldo') {
+    if (Template.instance().state.get('waldoFilter') && this == 'Waldo') {
       return {class: 'waldo'};
     }
   }
@@ -26,26 +31,19 @@ Template.performanceTest.helpers({
 
 
 Template.performanceTest.events({
-  'click .count-selector': function (e) {
+  'click .count-selector': function (e, template) {
     var value = $(e.currentTarget).val();
-    Session.set('running', false);
-    Session.set('limit', value);
+    template.state.set('running', false);
+    template.state.set('limit', value);
   },
-  'click #reset': function () {
-    Session.set('running', false);
-    Session.set('waldoFilter', false);
+  'click #reset': function (e, template) {
+    template.state.set('running', false);
+    template.state.set('waldoFilter', false);
   },
-  'click #run': function () {
-    Session.set('running', true);
+  'click #run': function (e, template) {
+    template.state.set('running', true);
   },
-  'click #find-waldos': function () {
-    Session.set('waldoFilter', !Session.get('waldoFilter'));
+  'click #find-waldos': function (e, template) {
+    template.state.set('waldoFilter', !template.state.get('waldoFilter'));
   }
 });
-
-/**
- * Memory Profiling
- * https://github.com/paulirish/memory-stats.js/tree/master
- */
-// open /Applications/Google\ Chrome.app --args --enable-precise-memory-info
-(function(){var script=document.createElement('script');script.src='https://rawgit.com/paulirish/memory-stats.js/master/bookmarklet.js';document.head.appendChild(script);})()

@@ -36,8 +36,10 @@ Template.performanceTest.events({
     Session.set('runH', false);
     Session.set('runT', false);
   },
-  'click #run': function (e) {
-    var letter = $(e.currentTarget).val();
-    Session.set('run' + letter, true);
+  'click #runH': function () {
+    Session.set('runH', false);
+  },
+  'click #runT': function () {
+    Session.set('runT', false);
   }
 });
