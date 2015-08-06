@@ -24,9 +24,9 @@
     </tr>
     </thead>
     <tbody id="rows">
-    <tr ng-repeat="r in app.rows track by $index">
-      <td ng-repeat="name in r.names track by $index"
-          ng-class="{'waldo': app.isWaldo(name)}">{{name}}</td>
+    <tr ng-repeat="r in ::app.rows track by $index">
+      <td ng-repeat="name in ::r.names track by $index"
+          ng-class="{'waldo': app.isWaldo(name)}">{{::name}}</td>
     </tr>
     </tbody>
   </table>
