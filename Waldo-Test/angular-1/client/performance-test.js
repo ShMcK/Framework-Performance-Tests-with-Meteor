@@ -12,7 +12,7 @@ function performanceTest() {
 function performanceTestCtrl($meteor) {
   $meteor.subscribe('items');
   var self = this;
-  self.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  self.numbers = _.range(1, 11);
   self.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   self.waldoFilter = false;
   self.count = 1;

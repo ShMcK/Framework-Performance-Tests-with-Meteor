@@ -46,7 +46,7 @@ App = React.createClass({
     });
   },
   getNumbers: function () {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    return _.range(1, 11);
   },
   renderTableHeads: function () {
     return this.getNumbers().map((number) => {

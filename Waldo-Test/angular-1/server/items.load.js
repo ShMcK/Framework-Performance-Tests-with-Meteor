@@ -4,10 +4,10 @@ Meteor.startup(function () {
   if (Items.find().count() === 0) {
     var max = 5000;
 
-    for (var i = 0; i < max + 1; i++) {
+    _.times(max, function() {
       Items.insert({
         names: _.shuffle(names)
       });
-    }
+    });
   }
 });

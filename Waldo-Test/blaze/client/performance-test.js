@@ -17,7 +17,7 @@ Template.performanceTest.helpers({
     }
   },
   'numbers': function () {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    return _.range(1, 11);
   },
   'counts': function () {
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];

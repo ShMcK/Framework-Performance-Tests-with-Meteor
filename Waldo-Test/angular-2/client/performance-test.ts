@@ -1,5 +1,4 @@
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
-//import {jitInjectables} from 'angular2/angular2';
 
 declare var Items:any;
 
@@ -20,7 +19,7 @@ class PerformanceTests {
 
   constructor() {
     Meteor.subscribe('items');
-    this.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    this.numbers = _.range(1, 11);
     this.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
     this.selectedCount = 1;
     this.waldoFilter = false;
@@ -52,9 +51,7 @@ class PerformanceTests {
   }
 }
 
-bootstrap(PerformanceTests, [
-  // jitInjectables // performance increase
-]);
+bootstrap(PerformanceTests, []);
 
 /**
  * Memory Profiling
