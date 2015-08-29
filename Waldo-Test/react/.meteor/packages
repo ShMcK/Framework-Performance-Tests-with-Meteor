@@ -7,8 +7,11 @@
 meteor-platform
 
 # React
-reactjs:react
+#reactjs:react
 
 # Styles
 spectrum:material-design-lite
 react-meteor-data
+
+nicksergeant:react
+grigio:babel
