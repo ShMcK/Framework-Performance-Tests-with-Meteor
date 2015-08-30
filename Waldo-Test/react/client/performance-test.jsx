@@ -1,6 +1,7 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-
-var PureRenderMixin = React.addons.PureRenderMixin;
+//var PureRenderMixin = React.addons.PureRenderMixin;
 
 var Cell = React.createClass({
   //mixins: [PureRenderMixin], the pure render mixin can replace the following optimization
@@ -9,13 +10,13 @@ var Cell = React.createClass({
       return false;
     }
     return true;
-  }, 
+  },
   render: function(){    
     return (<td className={this.props.class}>{this.props.name}</td>);
   }
 });
 
-App = React.createClass({
+var App = React.createClass({
   componentWillMount: function() {
     this.items = [];
     this.limit = 1;
@@ -34,7 +35,7 @@ App = React.createClass({
         if (this.state.waldoFilter && name === 'Waldo') {
           classString = 'waldo'
         }
-        return (<Cell key={index} class={classString} name={name} />);
+        return (<td key={index} className={classString}>{{name}}</td>);
       });
       return (<tr key={row._id}>{names}</tr>);
     });
@@ -106,7 +107,7 @@ App = React.createClass({
 
 
 Meteor.startup(function () {
-  React.render(<App />, document.getElementById("app-target"));
+  ReactDOM.render(<App />, document.getElementById("app-target"));
 });
 
 /**

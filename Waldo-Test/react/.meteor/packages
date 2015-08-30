@@ -13,5 +13,9 @@ meteor-platform
 spectrum:material-design-lite
 react-meteor-data
 
-nicksergeant:react
+#nicksergeant:react
 grigio:babel
+meteorhacks:npm
+
+
+npm-container
