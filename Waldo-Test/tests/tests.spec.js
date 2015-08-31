@@ -1,9 +1,9 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  SAMPLE_SIZE: 20, // number of times the test runs
+  SAMPLE_SIZE: 5, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000],
+  COUNTS: [5000],
   TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
 };
 
@@ -28,7 +28,7 @@ describe('Performance Tests', function () {
       runner.sample({
         id: 'load-rows',
         prepare: function () {
-          return $('#reset').click();
+          //return $('#reset').click();
         },
         execute: function () {
           $('#count-' + count).click();
@@ -46,7 +46,7 @@ describe('Performance Tests', function () {
       runner.sample({
         id: 'find-waldos',
         prepare: function () {
-          $('#reset').click();
+          //$('#reset').click();
           $('#count-' + count).click();
           return $('#run').click();
         },

@@ -1,47 +1,52 @@
-App = React.createClass({
-  mixins: [ReactMeteor.Mixin, ReactMeteorData],
-  startMeteorSubscriptions: function () {
-    Meteor.subscribe('items');
-  },
-  getMeteorData() {
-    var handle = Meteor.subscribe('items');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-    return {
-      items: () => {
-        if (this.state.running) {
-          return Items.find({}, {limit: this.state.limit}).fetch()
-        } else {
-          return [];
-        }
-      }
-    };
+//var PureRenderMixin = React.addons.PureRenderMixin;
+
+var Cell = React.createClass({
+  //mixins: [PureRenderMixin], the pure render mixin can replace the following optimization
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.class === this.props.class && nextProps.name === this.props.name){
+      return false;
+    }
+    return true;
+  },
+  render: function(){    
+    return (<td className={this.props.class}>{this.props.name}</td>);
+  }
+});
+
+var App = React.createClass({
+  componentWillMount: function() {
+    this.items = [];
+    this.limit = 1;
+    Meteor.subscribe('items');
   },
   getInitialState: function () {
     return {
-      limit: 1,
       running: false,
-      waldoFilter: false
+      waldoFilter: false,
     }
   },
-  renderRows: function () {
-    return this.data.items().map((row) => {
+  renderRows: function() {
+    return this.items.map((row) => {
       var names = row.names.map((name, index) => {
         var classString;
-        if (this.state.waldoFilter && name == 'Waldo') {
+        if (this.state.waldoFilter && name === 'Waldo') {
           classString = 'waldo'
         }
         return (<td key={index} className={classString}>{{name}}</td>);
       });
       return (<tr key={row._id}>{names}</tr>);
     });
-  },
+  },  
   getCounts: function () {
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   },
   renderCounts: function () {
     return this.getCounts().map((count) => {
       var countId = "count-" + count;
-      return (<button key={count} onClick={()=>{this._changeLimit(count)}} className="mdl-button"
+      return (<button key={countId} onClick={()=>{this._changeLimit(count)}} className="mdl-button"
                       id={countId}>{count}</button>);
     });
   },
@@ -49,27 +54,23 @@ App = React.createClass({
     return _.range(1, 11);
   },
   renderTableHeads: function () {
-    return this.getNumbers().map((number) => {
-      return (<th className="mdl-data-table__cell--non-numeric">{{number}}</th>);
+    return this.getNumbers().map((number,i) => {
+      return <th key={i} className="mdl-data-table__cell--non-numeric">{number}</th>;
     })
   },
   _run: function () {
-    this.setState((prevState, currentProps) => {
-      return {running: true};
-    });
+    this.items = Items.find({}, { limit: this.limit }).fetch();
+    this.setState({ running: true, })
   },
   _reset: function () {
-    this.setState((prevState, currentProps) => {
-      return {waldoFilter: false, running: false};
-    })
+    this.items = [];
+    this.setState({ waldoFilter: false, running: false })
   },
   _changeLimit: function (newLimit) {
-    this.setState({running: false, limit: newLimit});
+    this.limit = newLimit;
   },
   _findWaldos: function () {
-    this.setState((prevState, currentProps) => {
-      return {waldoFilter: !prevState.waldoFilter};
-    })
+    this.setState({ waldoFilter: !this.state.waldoFilter })
   },
   render: function () {
     return (<section className="pt">
@@ -103,8 +104,10 @@ App = React.createClass({
   }
 });
 
+
+
 Meteor.startup(function () {
-  React.render(<App />, document.getElementById("app-target"));
+  ReactDOM.render(<App />, document.getElementById("app-target"));
 });
 
 /**
