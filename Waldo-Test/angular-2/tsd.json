@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "underscore/underscore.d.ts": {
+      "commit": "14ab703f435375194360cdba3abab61afc879c18"
+    },
+    "meteor/meteor.d.ts": {
+      "commit": "14ab703f435375194360cdba3abab61afc879c18"
+    },
+    "angular2/angular2.d.ts": {
+      "commit": "14ab703f435375194360cdba3abab61afc879c18"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "14ab703f435375194360cdba3abab61afc879c18"
+    }
+  }
+}

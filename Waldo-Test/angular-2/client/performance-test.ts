@@ -1,6 +1,7 @@
-import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
+import {Component, View, NgFor} from 'angular2/angular2';
+import {bootstrap} from 'angular2-meteor';
 
-declare var Items:any;
+declare var Items:Mongo.Collection<string[]>;
 
 @Component({
   selector: 'performance-test'
@@ -40,22 +41,15 @@ class PerformanceTests {
     this.waldoFilter = !this.waldoFilter;
   }
 
-  isWaldo(name) {
+  isWaldo(name: string) {
     if (this.waldoFilter && name === 'Waldo') {
       return true;
     }
   }
 
-  setCountValue(value) {
+  setCountValue(value: number) {
     this.selectedCount = value;
   }
 }
 
-bootstrap(PerformanceTests, []);
-
-/**
- * Memory Profiling
- * https://github.com/paulirish/memory-stats.js/tree/master
- */
-// open /Applications/Google\ Chrome.app --args --enable-precise-memory-info
-(function(){var script=document.createElement('script');script.src='https://rawgit.com/paulirish/memory-stats.js/master/bookmarklet.js';document.head.appendChild(script);})()
+bootstrap(PerformanceTests);

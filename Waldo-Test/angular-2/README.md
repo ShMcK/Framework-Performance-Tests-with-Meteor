@@ -4,13 +4,20 @@
 
 ### Setup 
 
-    meteor create blaze
-    cd blaze
-    meteor add shmck:angular2
-    meteor add netanelgilad:angular2-typescript
+    meteor create angular-2
+    cd angular-2
+    meteor add urigo:angular2-meteor
     meteor add spectrum:material-design-lite
+    meteor add meteor-base
+    meteor add mongo
+    meteor add standard-minifiers
+    meteor add underscore
     
-Copy Folders to `blaze` directory.
+Optional Typings
+    
+    tsd install angular2/angular meteor/meteor underscore/underscore --save
+    
+Copy Folders to `angular-2` directory.
 
     ./client
     ./model
@@ -18,8 +25,4 @@ Copy Folders to `blaze` directory.
     
 Run
 
-    meteor
-    
-Notes:
-
-    Warning about 'require' in console is due to TypeScript compiler. Everything should still work. 
+    meteor 
