@@ -8,6 +8,7 @@ var TEST = {
   TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
 };
 
+// increase test count timeout interval proportionally with number of counts
 jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNT * TEST.TIMEOUT_INTERVAL_VAR;
 
 var runner = new benchpress.Runner([

@@ -1,9 +1,9 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  SAMPLE_SIZE: 20, // number of times the test runs
+  SAMPLE_SIZE: 5, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+  COUNTS: [5000],
   TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
 };
 
@@ -21,36 +21,40 @@ var runner = new benchpress.Runner([
 
 describe('Performance Tests', function () {
 
-  function renderList(count, target) {
-    var title;
-    switch (target) {
-      case 'H':
-        title = 'HTML';
-        break;
-      case 'T':
-        title = 'Component with Template';
-        break;
-      case 'U':
-        title = 'Component with TemplateUrl';
-        break;
-      default:
-        throw 'Invalid target. Must be H, T or U.'
-    }
-
-    it('render ' + title + ': ' + count + ' rows', function (done) {
+  function testPaintingTime(count) {
+    it('time to paint ' + count + ' rows', function (done) {
       browser.ignoreSynchronization = true;
       browser.get(TEST.ADDRESS);
       runner.sample({
-        id: title,
+        id: 'load-rows',
         prepare: function () {
-          return $('#reset').click();
+          //return $('#reset').click();
         },
         execute: function () {
           $('#count-' + count).click();
-          return $('#run' + target).click();
+          return $('#run').click();
         }
       }).then(done, done.fail);
       addTitle('Testing time to paint ' + count * 10 + ' Items');
+    });
+  }
+
+  function testFindWaldos(count) {
+    it('time to find ' + count + ' Waldos', function (done) {
+      browser.ignoreSynchronization = true;
+      browser.get(TEST.ADDRESS);
+      runner.sample({
+        id: 'find-waldos',
+        prepare: function () {
+          //$('#reset').click();
+          $('#count-' + count).click();
+          return $('#run').click();
+        },
+        execute: function () {
+          return $('#find-waldos').click();
+        }
+      }).then(done, done.fail);
+      addTitle('Testing time to find ' + count + ' Waldos');
     });
   }
 
@@ -64,10 +68,8 @@ describe('Performance Tests', function () {
 
   for (var x = 0; x < TEST.COUNTS.length; x++) {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNTS[x] * TEST.TIMEOUT_INTERVAL_VAR;
-    renderList(TEST.COUNTS[x], 'H');
-    renderList(TEST.COUNTS[x], 'T');
-    renderList(TEST.COUNTS[x], 'U');
+    testPaintingTime(TEST.COUNTS[x]);
+    testFindWaldos(TEST.COUNTS[x]);
   }
-
 
 });

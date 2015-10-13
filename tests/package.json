@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Shawn McKay <me@shmck.com>",
+  "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "benchpress": "^2.0.0-alpha.31",
+    "benchpress": "^2.0.0-alpha.40",
     "microtime": "^1.4.2",
     "jasmine-core": "^2.3.4"
   }
