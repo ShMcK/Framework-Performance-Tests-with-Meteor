@@ -1,6 +1,6 @@
 # Find Waldos Test
 
-## Angular 2.0.0-alpha
+## Angular 2.0.0-alpha 40
 
 ### Setup 
 
