@@ -1,8 +1,6 @@
 import {Component, View, NgFor} from 'angular2/angular2';
 import {bootstrap} from 'angular2-meteor';
 
-declare var Items:Mongo.Collection<string[]>;
-
 @Component({
   selector: 'performance-test'
 })

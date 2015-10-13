@@ -4,12 +4,12 @@
 
 ### Setup 
 
-    meteor create blaze
+    meteor create angular-1
     cd blaze
     meteor add urigo:angular
     meteor add spectrum:material-design-lite
     
-Copy Folders to `blaze` directory.
+Copy Folders to `angular-1` directory.
 
     ./client
     ./model
@@ -18,7 +18,6 @@ Copy Folders to `blaze` directory.
 Run
 
     meteor
-
 
 Perf Improvements
 

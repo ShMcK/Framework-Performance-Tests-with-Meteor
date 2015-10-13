@@ -1,0 +1,1 @@
+declare var Items:Mongo.Collection<string[]>;
