@@ -21,4 +21,7 @@ Run
 
 Perf Improvements
 
-    - Removed one time bindings
+    - Fixed one-time bindings
+    - Removed unnecessary Meteor packages
+    
+Pageload Time: 888ms (Google Page Load Time plugin)

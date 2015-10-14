@@ -13,10 +13,9 @@ spectrum:material-design-lite
 # Meteor
 meteor-base
 standard-minifiers
-mongo
-mobile-experience
 blaze-html-templates
 
 # Data
+mongo
 underscore
 

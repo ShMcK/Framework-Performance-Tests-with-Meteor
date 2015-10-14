@@ -2,6 +2,8 @@
 
 ### [Comparing Performance of Blaze, React, Angular-Meteor & Angular2-Meteor](http://info.meteor.com/blog/comparing-performance-of-blaze-react-angular-meteor-and-angular-2-with-meteor): 
 
+** Updated: 10.14.2015 **
+
 Rendering & Re-Rendering Speeds
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/perfMethod.gif?t=1444781138300 "Waldo Test Example")

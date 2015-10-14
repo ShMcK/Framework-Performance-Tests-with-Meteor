@@ -18,3 +18,5 @@ Copy Folders to `react` directory.
 Run
 
     meteor
+
+Pageload Speed: 1004ms (Google Page Load Plugin)

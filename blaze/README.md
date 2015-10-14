@@ -17,3 +17,5 @@ Copy Folders to `blaze` directory.
 Run
 
     meteor
+    
+Pageload Speed: 784ms (Google Page Load Plugin)

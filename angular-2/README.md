@@ -26,3 +26,6 @@ Copy Folders to `angular-2` directory.
 Run
 
     meteor 
+    
+
+Pageload Time: 1207ms (Google Page Load Time plugin)

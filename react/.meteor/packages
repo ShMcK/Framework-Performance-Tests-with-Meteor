@@ -14,10 +14,10 @@ spectrum:material-design-lite
 # Meteor
 standard-minifiers
 meteor-base
-mobile-experience
-mongo
 blaze-html-templates
-reload
+
+# Data
+mongo
 underscore
 
 
