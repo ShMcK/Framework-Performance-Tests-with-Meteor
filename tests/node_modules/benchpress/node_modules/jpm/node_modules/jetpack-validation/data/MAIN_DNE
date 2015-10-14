@@ -1,3 +1,0 @@
-The addon has no valid entry point. Either create an entry point
-at `./index.js`, or set the `main` property to a valid path in
-your addon.

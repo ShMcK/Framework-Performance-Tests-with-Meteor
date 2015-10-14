@@ -1,3 +1,4 @@
 .idea/
 component-test/tests/node_modules/
 waldo-test/tests/node_modules/
+tests/node_modules
