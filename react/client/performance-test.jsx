@@ -1,12 +1,10 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-
+'use strict';
 //var PureRenderMixin = React.addons.PureRenderMixin;
 
 var Cell = React.createClass({
   //mixins: [PureRenderMixin], the pure render mixin can replace the following optimization
-  shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.class === this.props.class && nextProps.name === this.props.name){
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.class === this.props.class && nextProps.name === this.props.name) {
       return false;
     }
     return true;
@@ -25,7 +23,7 @@ var App = React.createClass({
   getInitialState: function () {
     return {
       running: false,
-      waldoFilter: false,
+      waldoFilter: false
     }
   },
   renderRows: function() {
@@ -104,15 +102,6 @@ var App = React.createClass({
   }
 });
 
-
-
 Meteor.startup(function () {
-  ReactDOM.render(<App />, document.getElementById("app-target"));
+  React.render(<App />, document.getElementById("app-target"));
 });
-
-/**
- * Memory Profiling
- * https://github.com/paulirish/memory-stats.js/tree/master
- */
-// open /Applications/Google\ Chrome.app --args --enable-precise-memory-info
-(function(){var script=document.createElement('script');script.src='https://rawgit.com/paulirish/memory-stats.js/master/bookmarklet.js';document.head.appendChild(script);})()

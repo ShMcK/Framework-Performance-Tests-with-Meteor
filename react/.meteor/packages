@@ -4,18 +4,20 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-
 # React
-#reactjs:react
+react
+react-meteor-data
 
 # Styles
 spectrum:material-design-lite
-react-meteor-data
 
-#nicksergeant:react
-grigio:babel
-meteorhacks:npm
+# Meteor
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+reload
+underscore
 
 
-npm-container

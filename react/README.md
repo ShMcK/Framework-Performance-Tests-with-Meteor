@@ -1,20 +1,20 @@
 # Find Waldos Test
 
-## React 0.13
+## React 0.13.3
 
 ### Setup 
 
-    meteor create blaze
-    cd blaze
+    meteor create react
+    cd react
     meteor add spectrum:material-design-lite
-    meteor add reactjs:react
+    meteor add react
     
-Copy Folders to `blaze` directory.
+Copy Folders to `react` directory.
 
     ./client
     ./model
     ./server
-    
+        
 Run
 
     meteor

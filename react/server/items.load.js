@@ -1,17 +1,3 @@
-if (Meteor.isServer) {
-  Meteor.methods({
-    'React': function getReact() {
-      var React = Meteor.npmRequire('react');
-      return React;
-    },
-    'ReactDOM': function getReactDOM() {
-      var React = Meteor.npmRequire('react-dom');
-      return React;
-    }    
-  });
-}
-
-
 Meteor.startup(function () {
   var names = ['Waldo', 'Odlaw', 'Aldow', 'Wodal', 'Lodaw', 'Ladow', 'Owlda', 'Woald', 'Dawol', 'Oawld'];
 
@@ -24,5 +10,4 @@ Meteor.startup(function () {
       });
     });
   }
-  
 });
