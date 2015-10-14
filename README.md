@@ -15,7 +15,7 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
 
 ## Testing using Angular BenchPress
 
-## Setup
+#### Setup
 
 * Setup up [Protractor](https://angular.github.io/protractor/#/)
 * Setup [BenchPress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md)
@@ -25,7 +25,7 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
     npm install --save
 
 
-## Run a Test
+#### Run a Test
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpress-setup.gif?t=1444781138300 "Run Benchpress")
 
