@@ -1,6 +1,6 @@
 # Find Waldos Test
 
-## Blaze
+## Blaze 2.1.3
 
 ### Setup 
 
