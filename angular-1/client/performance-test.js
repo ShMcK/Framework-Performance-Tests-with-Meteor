@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
   .directive('performanceTest', performanceTest);
 
@@ -44,10 +46,3 @@ function performanceTestCtrl($meteor) {
     console.log(self.waldoFilter);
   };
 }
-
-/**
- * Memory Profiling
- * https://github.com/paulirish/memory-stats.js/tree/master
- */
-// open /Applications/Google\ Chrome.app --args --enable-precise-memory-info
-(function(){var script=document.createElement('script');script.src='https://rawgit.com/paulirish/memory-stats.js/master/bookmarklet.js';document.head.appendChild(script);})()
