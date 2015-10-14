@@ -11,4 +11,12 @@ angular
 spectrum:material-design-lite
 
 # Meteor
-meteor-platform
+meteor-base
+standard-minifiers
+mongo
+mobile-experience
+blaze-html-templates
+
+# Data
+underscore
+
