@@ -1,7 +1,6 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  IS_ANGULAR_2: false,
   SAMPLE_SIZE: 20, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
   COUNT: 100, // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
@@ -23,7 +22,6 @@ describe('Performance Test', function () {
 
   it('time to paint ' + TEST.COUNT + ' rows', function (done) {
 
-    browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
     browser.get(TEST.ADDRESS);
 
     runner.sample({
@@ -39,7 +37,6 @@ describe('Performance Test', function () {
   });
 
   it('time to find ' + TEST.COUNT + ' Waldos', function (done) {
-    browser.ignoreSynchronization = !TEST.IS_ANGULAR_2;
     browser.get(TEST.ADDRESS);
     runner.sample({
       id: 'find-waldos',
