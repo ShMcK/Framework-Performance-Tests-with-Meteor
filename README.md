@@ -4,6 +4,8 @@
 
 Rendering & Re-Rendering Speeds
 
+![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/perfMethod.gif?t=1444781138300 "Waldo Test Example")
+
 * [Blaze](https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor/tree/master/blaze) (Meteor default)
 * [React-Meteor](https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor/tree/master/react)
 * [Angular-Meteor](https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor/tree/master/angular-1)
@@ -11,7 +13,7 @@ Rendering & Re-Rendering Speeds
 
 See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck.com/measuring-angular-performance-track-by-and-one-time-binding/).
 
-## Testing using Angular Bench Mark
+## Testing using Angular BenchPress
 
 ## Setup
 
@@ -24,6 +26,8 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
 
 
 ## Run a Test
+
+![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpress-setup.gif?t=1444781138300 "Run Benchpress")
 
 1. Open a different terminal and start webdriver
 
@@ -50,6 +54,8 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
         protractor benchpress.conf.js
 
 5. Check the output
+
+![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpressRun.gif?t=1444781138300 "Benchpress output")
 
 ##### Example output: (Angular 2, count: 10, sampleSize: 10)
 
