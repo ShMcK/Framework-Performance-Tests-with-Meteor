@@ -9,17 +9,17 @@
     meteor add angular
     meteor add spectrum:material-design-lite
     
-Copy Folders to `angular-1` directory.
+##### Copy Folders to `angular-1` directory.
 
     ./client
     ./model
     ./server
     
-Run
+##### Run
 
     meteor
 
-Perf Improvements
+##### Perf Improvements
 
     - Fixed one-time bindings
     - Removed unnecessary Meteor packages

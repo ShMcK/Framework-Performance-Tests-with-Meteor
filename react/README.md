@@ -15,7 +15,7 @@ Copy Folders to `react` directory.
     ./model
     ./server
         
-Run
+### Run
 
     meteor
 

@@ -14,7 +14,7 @@ Copy Folders to `blaze` directory.
     ./model
     ./server
     
-Run
+### Run
 
     meteor
     
