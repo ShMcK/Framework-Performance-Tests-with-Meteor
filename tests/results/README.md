@@ -1,20 +1,29 @@
-# Collect Benchpress Output
+# Benchpress Output Table Generator
 
-Collect results into a single `.md` file using Gulp.
+Put results into an easy to understand table
+
+##### Setup
+
+    npm i
+    
+##### Run
+
+    gulp
+ 
+##### Output to file
+ 
+    gulp > output.md
  
 ##### Example Output
 
 Example output in `results.md`:
- 
-    File: angular-1.txt 
- 
-    | Counts | Paint DOM | Re-Render DOM |
-    |--------|-----------|---------------|
-    |     10 |      0.14 |          0.02 |
-    |    100 |      0.34 |          0.11 |
+  
+    File: blaze.txt
+    |       Counts |    Paint DOM | Re-Paint DOM |
+    |--------------|--------------|--------------|
+    |          100 |    0.81+-30% |         0.00 |
+    |         1000 |    0.35+-56% |         0.00 |
+    |         5000 |   0.04+-300% |         0.00 |
+    
     ...
       
-##### Goals:
-
-* Collect data to .md file
-* Graph data
