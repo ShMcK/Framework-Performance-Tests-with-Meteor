@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-var fs = require('vinyl-fs');
+var vinyl= require('vinyl-fs');
+var fs = require('fs');
 var map = require('map-stream');
-var match = require('gulp-match');
+var gutil = require('gulp-util');
 
 /* Regex conditions for picking data */
 var paintCountRegex = RegExp(/^\*{13} Testing time to paint (\d+) Items \*{13}$/gm);
@@ -11,19 +12,14 @@ var dataRegex = RegExp(/^[={18} \|]+$\n(\s+(\d+\.\d+(\+\-\d+\%)?)(?: \|)?)+/);
 var input = './*.txt';
 var output = './results.md';
 
-var condition = true; // TODO: add business logic here
-var options = null; // Optionally pass options to minimatch
-
 gulp.task('collect', function () {
-  fs.src(input)
+  vinyl.src(input)
     .pipe(map(function(file, cb) {
-      // match paintCountRegex or findWaldosCountRegex
-      var isMatch = match(file, condition, options);
+      // blaze.txt
+      console.log(file.basename);
+      var content = fs.readFileSync(file.path, "utf8");
+      console.log(content);
 
-      if (isMatch) {
-        // match dataRegex
-
-      }
       cb(null, file);
     }));
 });

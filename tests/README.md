@@ -88,9 +88,9 @@ Finished in 20.571 seconds
 
 * `Error: Could not find chromedriver at /usr/local/lib/node_modules/protractor/selenium/chromedriver.exe`
 
-Re-install protractor, and restart your computer.
+    - Re-install protractor, and restart your computer.
     
 * `A Jasmine spec timed out. Resetting the WebDriver Control Flow.`
 
-Consider increasing your `TIMEOUT_INTERVAL_VAR` in `tests.spec.js`.
-Consider increasing `defaultTimeoutInterval` in `benchpress.conf.js`.
+    - Consider increasing your `TIMEOUT_INTERVAL_VAR` in `tests.spec.js`.
+    - Consider increasing `defaultTimeoutInterval` in `benchpress.conf.js`.
