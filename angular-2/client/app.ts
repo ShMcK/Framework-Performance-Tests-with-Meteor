@@ -2,7 +2,7 @@ import {Component, View, NgFor} from 'angular2/angular2';
 import {bootstrap} from 'angular2-meteor';
 
 @Component({
-  selector: 'performance-test'
+  selector: 'app'
 })
 @View({
   templateUrl: 'client/performance-test.ng.html',
