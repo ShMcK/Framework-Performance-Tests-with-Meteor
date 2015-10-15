@@ -1,10 +1,10 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  SAMPLE_SIZE: 10, // number of times the test runs
+  SAMPLE_SIZE: 50, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
   COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals
-  TIMEOUT_INTERVAL_VAR: 1000, // increase this if you're getting a timeout error
+  TIMEOUT_INTERVAL_VAR: 2000, // increase this if you're getting a timeout error
   USE_RESET: false // protractors clicks reset before running a test
 };
 
@@ -20,6 +20,7 @@ var runner = new benchpress.Runner([
 
 describe('Performance Tests', function () {
 
+  // measure the time it takes to load rows
   function testPaintingTime(count) {
     it('time to paint ' + count + ' rows', function (done) {
       browser.ignoreSynchronization = true;
@@ -30,7 +31,6 @@ describe('Performance Tests', function () {
           if (TEST.USE_RESET) {
             return $('#reset').click();
           }
-          return;
         },
         execute: function () {
           $('#count-' + count).click();
@@ -41,6 +41,7 @@ describe('Performance Tests', function () {
     });
   }
 
+  // measure the time it takes to color 'Waldo's red
   function testFindWaldos(count) {
     it('time to find ' + count + ' Waldos', function (done) {
       browser.ignoreSynchronization = true;
@@ -62,12 +63,14 @@ describe('Performance Tests', function () {
     });
   }
 
+  // indicate separation between tests / counts
   function addTitle(message) {
     console.log('\n*********************************************************');
     console.log('************* ' + message + ' *************');
     console.log('*********************************************************\n');
   }
 
+  // loop over counts and run tests
   for (var x = 0; x < TEST.COUNTS.length; x++) {
     testPaintingTime(TEST.COUNTS[x]);
     testFindWaldos(TEST.COUNTS[x]);

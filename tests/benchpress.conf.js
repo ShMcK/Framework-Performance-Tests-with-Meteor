@@ -1,5 +1,8 @@
 // referenced from https://github.com/dfbaskin/render-large-datasets-angularjs-reactjs/blob/master/tests/angular-1-mount-grid.conf.js
 
+// fix for memory leak issue
+require('events').EventEmitter.prototype._maxListeners = 50;
+
 exports.config = {
 
   directConnect: true,
