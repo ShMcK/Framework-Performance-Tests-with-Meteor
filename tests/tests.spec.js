@@ -59,11 +59,9 @@ describe('Performance Tests', function () {
   }
 
   function addTitle(message) {
-    console.log('\n');
-    console.log('*********************************************************');
+    console.log('\n*********************************************************');
     console.log('************* ' + message + ' *************');
-    console.log('*********************************************************');
-    console.log('\n');
+    console.log('*********************************************************\n');
   }
 
   for (var x = 0; x < TEST.COUNTS.length; x++) {

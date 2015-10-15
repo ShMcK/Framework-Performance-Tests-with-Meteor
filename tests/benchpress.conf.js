@@ -7,7 +7,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      // Important for benchpress to get timeline data from the browser
+      // Important for Benchpress to get timeline data from the browser
       'args': ['--js-flags=--expose-gc'],
       'perfLoggingPrefs': {
         'traceCategories': 'blink.console,disabled-by-default-devtools.timeline'
@@ -19,8 +19,7 @@ exports.config = {
   },
 
   specs: [
-    './tests.spec.js' // run all tests for a framework
-    //'./test.spec.js' // run a specific test for a framework
+    './tests.spec.js'
   ],
   framework: 'jasmine2',
 

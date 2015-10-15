@@ -9,7 +9,7 @@
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "benchpress": "2.0.0-alpha.42",
+    "benchpress": "^2.0.0-alpha.42",
     "microtime": "2.0.0",
     "jasmine-core": "2.3.4"
   }
