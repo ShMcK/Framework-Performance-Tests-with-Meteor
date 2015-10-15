@@ -36,7 +36,7 @@
 
 5. Check the output in your console
 
-Alternatively, you can output the results to a file
+Alternatively, you can output the results to a file. See the results folder as an example.
 
 
     protractor benchpress.conf.js > results/blaze.txt

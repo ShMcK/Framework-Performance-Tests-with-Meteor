@@ -54,8 +54,13 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
                
 4. Run Benchpress
 
-        protractor benchpress.conf.js
+
+    protractor benchpress.conf.js
 
 5. Check the output
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpressRun.gif?t=1444781138300 "Benchpress output")
+
+Alternatively, output the results to a file.
+
+    protractor benchpress.conf.js > results/angular-1.txt

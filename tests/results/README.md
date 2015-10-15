@@ -1,0 +1,1 @@
+Collect results into a single `.md` file using Gulp. 

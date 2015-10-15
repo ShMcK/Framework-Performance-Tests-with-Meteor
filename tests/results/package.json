@@ -1,0 +1,25 @@
+{
+  "name": "results",
+  "version": "1.0.0",
+  "description": "collect results from perf tests",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor.git"
+  },
+  "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor/issues"
+  },
+  "homepage": "https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor#readme",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-match": "^1.0.0",
+    "map-stream": "0.0.6",
+    "vinyl-fs": "^2.1.1"
+  }
+}
