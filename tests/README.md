@@ -31,9 +31,15 @@
                 
 4. Run Benchpress
 
-        protractor benchpress.conf.js
 
-5. Check the output
+    protractor benchpress.conf.js
+
+5. Check the output in your console
+
+Alternatively, you can output the results to a file
+
+
+    protractor benchpress.conf.js > results/blaze.txt
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpressRun.gif?t=1444781138300 "Benchpress output")
 
@@ -77,3 +83,14 @@ Finished in 20.571 seconds
 [launcher] 0 instance(s) of WebDriver still running
 [launcher] chrome #1 passed
 ```
+
+#### Issues / Fixes
+
+* `Error: Could not find chromedriver at /usr/local/lib/node_modules/protractor/selenium/chromedriver.exe`
+
+Re-install protractor, and restart your computer.
+    
+* `A Jasmine spec timed out. Resetting the WebDriver Control Flow.`
+
+Consider increasing your `TIMEOUT_INTERVAL_VAR` in `tests.spec.js`.
+Consider increasing `defaultTimeoutInterval` in `benchpress.conf.js`.

@@ -25,7 +25,6 @@ exports.config = {
 
   onPrepare: function () {
     var originalBrowser = browser;
-    var _tmpBrowser;
     beforeEach(function () {
       global.browser = originalBrowser.forkNewDriverInstance();
       global.element = global.browser.element;

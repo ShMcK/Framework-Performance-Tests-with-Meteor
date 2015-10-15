@@ -1,15 +1,14 @@
 var benchpress = require('benchpress');
 
 var TEST = {
-  SAMPLE_SIZE: 5, // number of times the test runs
+  SAMPLE_SIZE: 10, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000],
-  TIMEOUT_INTERVAL_VAR: 300 // increase this if youre getting a timeout error
+  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals
+  TIMEOUT_INTERVAL_VAR: 1000, // increase this if you're getting a timeout error
+  USE_RESET: false // protractors clicks reset before running a test
 };
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNT * TEST.TIMEOUT_INTERVAL_VAR;
-
-// emitter.setMaxListeners()
+jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNTS[TEST.COUNTS.length - 1] * TEST.TIMEOUT_INTERVAL_VAR;
 
 var runner = new benchpress.Runner([
   benchpress.SeleniumWebDriverAdapter.PROTRACTOR_BINDINGS,
@@ -28,7 +27,10 @@ describe('Performance Tests', function () {
       runner.sample({
         id: 'load-rows',
         prepare: function () {
-          //return $('#reset').click();
+          if (TEST.USE_RESET) {
+            return $('#reset').click();
+          }
+          return;
         },
         execute: function () {
           $('#count-' + count).click();
@@ -46,7 +48,9 @@ describe('Performance Tests', function () {
       runner.sample({
         id: 'find-waldos',
         prepare: function () {
-          //$('#reset').click();
+          if (TEST.USE_RESET) {
+            $('#reset').click();
+          }
           $('#count-' + count).click();
           return $('#run').click();
         },
@@ -65,7 +69,6 @@ describe('Performance Tests', function () {
   }
 
   for (var x = 0; x < TEST.COUNTS.length; x++) {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNTS[x] * TEST.TIMEOUT_INTERVAL_VAR;
     testPaintingTime(TEST.COUNTS[x]);
     testFindWaldos(TEST.COUNTS[x]);
   }

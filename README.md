@@ -18,6 +18,12 @@ See also: [AngularJS `track by` & one-time binding Performance](http://www.shmck
 #### Setup
 
 * Setup up [Protractor](https://angular.github.io/protractor/#/)
+
+
+    npm install -g protractor
+    webdriver-manager update
+    webdriver-manager start
+       
 * Setup [BenchPress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md)
 
 
