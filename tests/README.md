@@ -92,5 +92,5 @@ Finished in 20.571 seconds
     
 * `A Jasmine spec timed out. Resetting the WebDriver Control Flow.`
 
-    - Consider increasing your `TIMEOUT_INTERVAL_VAR` in `tests.spec.js`.
-    - Consider increasing `defaultTimeoutInterval` in `protractor.conf.js`.
+    - Consider increasing your `TIMEOUT_INTERVAL_VAR`  or `defaultTimeoutInterval` in `tests.spec.js`.
+ 

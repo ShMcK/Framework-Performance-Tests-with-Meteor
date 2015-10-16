@@ -12,7 +12,7 @@ Put results into an easy to understand table
  
 ##### Output to file
  
-    gulp > output.md
+    gulp > results.md
  
 ##### Example Output
 

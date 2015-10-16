@@ -28,7 +28,7 @@ describe('Performance Tests', function () {
   // measure the time it takes to load rows
   function testPaintingTime(count) {
     it('time to paint ' + count + ' rows', async(function (done) {
-
+      browser.ignoreSynchronization = true;
       await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'load-rows',
@@ -47,6 +47,7 @@ describe('Performance Tests', function () {
   // measure the time it takes to color 'Waldo's red
   function testFindWaldos(count) {
     it('time to find ' + count + ' Waldos', async (function (done) {
+      browser.ignoreSynchronization = true;
       await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'find-waldos',
@@ -78,7 +79,7 @@ describe('Performance Tests', function () {
   }
 
   // additional settings
-  browser.ignoreSynchronization = true;
+
 
   // loop over counts and run tests
   for (var x = 0; x < TEST.COUNTS.length; x++) {
