@@ -15,8 +15,10 @@ var output = './results.md';
 gulp.task('collect', function () {
   vinyl.src(input)
     .pipe(map(function(file, cb) {
+
       console.log('\n');
       console.log(`File: ${file.basename}`);
+      console.log('\n');
 
       var content = fs.readFileSync(file.path, "utf8");
       var countsMatches = content.match(findWaldosCountRegex);
@@ -37,7 +39,7 @@ gulp.task('collect', function () {
       });
 
       console.log('|           Counts |        Paint DOM |     Re-Paint DOM |');
-      console.log('|------------------|------------------|------------------|');
+      console.log('| ----------------:| ----------------:| ----------------:|');
 
       counts.forEach(function(count, index) {
         var col = 5;

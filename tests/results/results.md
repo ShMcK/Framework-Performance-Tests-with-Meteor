@@ -1,13 +1,15 @@
-[14:44:28] Using gulpfile ~/Desktop/CURRENT/framework-perf-tests/tests/results/gulpfile.js
-[14:44:28] Starting 'collect'...
-[14:44:28] Finished 'collect' after 9.14 ms
-[14:44:28] Starting 'default'...
-[14:44:28] Finished 'default' after 5 μs
+[14:50:57] Using gulpfile ~/Desktop/CURRENT/framework-perf-tests/tests/results/gulpfile.js
+[14:50:57] Starting 'collect'...
+[14:50:57] Finished 'collect' after 9.09 ms
+[14:50:57] Starting 'default'...
+[14:50:57] Finished 'default' after 5.76 μs
 
 
 File: angular-1.txt
+
+
 |           Counts |        Paint DOM |     Re-Paint DOM |
-|------------------|------------------|------------------|
+| ----------------:| ----------------:| ----------------:|
 |               10 |        9.49+-10% |        0.99+-34% |
 |              100 |       17.57+-12% |        2.28+-12% |
 |              500 |   11021.64+-140% |       27.02+-66% |
@@ -15,8 +17,10 @@ File: angular-1.txt
 
 
 File: angular-2.txt
+
+
 |           Counts |        Paint DOM |     Re-Paint DOM |
-|------------------|------------------|------------------|
+| ----------------:| ----------------:| ----------------:|
 |               10 |             0.00 |             0.00 |
 |              100 |             0.00 |             0.00 |
 |              500 |      11.26+-141% |             0.00 |
@@ -24,8 +28,10 @@ File: angular-2.txt
 
 
 File: blaze.txt
+
+
 |           Counts |        Paint DOM |     Re-Paint DOM |
-|------------------|------------------|------------------|
+| ----------------:| ----------------:| ----------------:|
 |               10 |       0.26+-141% |             0.00 |
 |              100 |       26.05+-97% |       0.42+-141% |
 |              500 |      285.07+-99% |       2.59+-141% |
@@ -33,8 +39,10 @@ File: blaze.txt
 
 
 File: react.txt
+
+
 |           Counts |        Paint DOM |     Re-Paint DOM |
-|------------------|------------------|------------------|
+| ----------------:| ----------------:| ----------------:|
 |               10 |             0.00 |             0.00 |
 |              100 |             0.00 |             0.00 |
 |              500 |       12.33+-83% |        6.56+-86% |
