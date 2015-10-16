@@ -1,10 +1,15 @@
-var benchpress = require('benchpress');
+var benchpress = require('benchpress'),
+  async = require('asyncawait/async'),
+  await = require('asyncawait/await');
+
+// fix for memory leak issue
+require('events').EventEmitter.prototype._maxListeners = 25;
 
 var TEST = {
-  SAMPLE_SIZE: 50, // number of times the test runs
+  SAMPLE_SIZE: 3, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals
-  TIMEOUT_INTERVAL_VAR: 2000, // increase this if you're getting a timeout error
+  COUNTS: [10, 100, 500, 1000], // intervals // , 2000, 3000, 4000, 5000
+  TIMEOUT_INTERVAL_VAR: 1000, // increase this if you're getting a timeout error
   USE_RESET: false // protractors clicks reset before running a test
 };
 
@@ -22,15 +27,13 @@ describe('Performance Tests', function () {
 
   // measure the time it takes to load rows
   function testPaintingTime(count) {
-    it('time to paint ' + count + ' rows', function (done) {
-      browser.ignoreSynchronization = true;
-      browser.get(TEST.ADDRESS);
+    it('time to paint ' + count + ' rows', async(function (done) {
+
+      await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'load-rows',
         prepare: function () {
-          if (TEST.USE_RESET) {
-            return $('#reset').click();
-          }
+          prepareTest();
         },
         execute: function () {
           $('#count-' + count).click();
@@ -38,20 +41,17 @@ describe('Performance Tests', function () {
         }
       }).then(done, done.fail);
       addTitle('Testing time to paint ' + count * 10 + ' Items');
-    });
+    }));
   }
 
   // measure the time it takes to color 'Waldo's red
   function testFindWaldos(count) {
-    it('time to find ' + count + ' Waldos', function (done) {
-      browser.ignoreSynchronization = true;
-      browser.get(TEST.ADDRESS);
+    it('time to find ' + count + ' Waldos', async (function (done) {
+      await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'find-waldos',
         prepare: function () {
-          if (TEST.USE_RESET) {
-            $('#reset').click();
-          }
+          prepareTest();
           $('#count-' + count).click();
           return $('#run').click();
         },
@@ -60,7 +60,14 @@ describe('Performance Tests', function () {
         }
       }).then(done, done.fail);
       addTitle('Testing time to find ' + count + ' Waldos');
-    });
+      //browser.close();
+    }));
+  }
+
+  function prepareTest() {
+    if (TEST.USE_RESET) {
+      return $('#reset').click();
+    }
   }
 
   // indicate separation between tests / counts
@@ -69,6 +76,9 @@ describe('Performance Tests', function () {
     console.log('************* ' + message + ' *************');
     console.log('*********************************************************\n');
   }
+
+  // additional settings
+  browser.ignoreSynchronization = true;
 
   // loop over counts and run tests
   for (var x = 0; x < TEST.COUNTS.length; x++) {

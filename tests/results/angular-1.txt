@@ -1,0 +1,228 @@
+Using ChromeDriver directly...
+[launcher] Running 1 instances of WebDriver
+Started
+
+*********************************************************
+************* Testing time to paint 100 Items *************
+*********************************************************
+
+BENCHMARK load-rows
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+           1685.52 |               3.77 |               0.00 |              11.22 |               3.81 |              11.50
+         819535.86 |              50.13 |               0.00 |            4387.95 |               2.93 |            4437.13
+              0.00 |               0.00 |               0.00 |               9.36 |               2.81 |               9.54
+              0.00 |               0.00 |               0.00 |              10.17 |               5.40 |              10.60
+              0.00 |               0.00 |               0.00 |               7.94 |               5.56 |               8.19
+              0.00 |               0.00 |               0.00 |               9.44 |               4.76 |               9.70
+           4527.05 |               2.66 |               0.00 |              10.36 |               6.42 |              10.58
+================== | ================== | ================== | ================== | ================== | ==================
+     1509.02+-141% |         0.89+-141% |               0.00 |          9.24+-10% |          5.58+-12% |          9.49+-10%
+[32m.[0m
+*********************************************************
+************* Testing time to find 10 Waldos *************
+*********************************************************
+
+BENCHMARK find-waldos
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+              0.00 |               0.00 |               0.00 |               1.03 |               4.20 |               1.14
+            365.06 |               0.63 |               0.00 |               0.59 |               3.14 |               0.68
+              0.00 |               0.00 |               0.00 |               0.73 |               2.90 |               0.83
+              0.00 |               0.00 |               0.00 |               1.33 |               4.67 |               1.46
+================== | ================== | ================== | ================== | ================== | ==================
+      121.69+-141% |         0.21+-141% |               0.00 |          0.88+-36% |          3.57+-21% |          0.99+-34%
+[32m.[0m
+*********************************************************
+************* Testing time to paint 1000 Items *************
+*********************************************************
+
+BENCHMARK load-rows
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+              0.00 |               0.00 |               0.00 |              34.62 |               6.23 |              34.91
+        5018624.37 |             351.98 |               0.00 |            9580.66 |               2.58 |            9930.99
+              0.00 |               0.00 |               0.00 |              14.21 |               3.82 |              14.41
+              0.00 |               0.00 |               0.00 |              18.52 |               6.33 |              18.69
+          12658.98 |               1.91 |               0.00 |              19.41 |               5.57 |              19.60
+================== | ================== | ================== | ================== | ================== | ==================
+     4219.66+-141% |         0.64+-141% |               0.00 |         17.38+-13% |          5.24+-20% |         17.57+-12%
+[32m.[0m
+*********************************************************
+************* Testing time to find 100 Waldos *************
+*********************************************************
+
+BENCHMARK find-waldos
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+        2048147.18 |             172.27 |               3.74 |            3652.01 |               4.39 |            3823.74
+           2271.34 |               1.81 |               0.00 |               2.63 |               4.31 |               2.78
+              0.00 |               0.00 |               0.00 |               3.36 |               6.74 |               3.52
+           8784.50 |               2.99 |               0.00 |               1.98 |               5.19 |               2.11
+              0.00 |               0.00 |               0.00 |               1.86 |               5.42 |               2.04
+           9960.85 |               4.05 |               0.00 |               2.55 |               3.35 |               2.70
+================== | ================== | ================== | ================== | ================== | ==================
+      6248.45+-71% |          2.35+-73% |               0.00 |          2.13+-14% |          4.65+-19% |          2.28+-12%
+[32m.[0m
+*********************************************************
+************* Testing time to paint 5000 Items *************
+*********************************************************
+
+BENCHMARK load-rows
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+              0.00 |               0.00 |               0.00 |              18.62 |               6.85 |              19.21
+       23130403.63 |            1683.15 |               0.00 |           31313.82 |               2.86 |           32995.57
+          15571.50 |               2.15 |               0.00 |              47.78 |               3.73 |              50.14
+================== | ================== | ================== | ================== | ================== | ==================
+  7715325.04+-141% |       561.77+-141% |               0.00 |     10460.07+-140% |          4.48+-38% |     11021.64+-140%
+[32m.[0m
+*********************************************************
+************* Testing time to find 500 Waldos *************
+*********************************************************
+
+BENCHMARK find-waldos
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+              0.00 |               0.00 |               0.00 |               1.18 |              16.14 |               1.49
+          15997.62 |               1.26 |               0.00 |              39.01 |               1.19 |              40.37
+          14953.47 |               2.13 |               0.00 |              36.99 |               1.24 |              39.20
+================== | ================== | ================== | ================== | ================== | ==================
+     10317.03+-70% |          1.13+-77% |               0.00 |         25.73+-67% |         6.19+-113% |         27.02+-66%
+[32m.[0m
+*********************************************************
+************* Testing time to paint 10000 Items *************
+*********************************************************
+
+BENCHMARK load-rows
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+           1609.38 |               3.52 |               0.00 |               9.88 |               3.72 |              10.16
+       45838337.46 |            3606.25 |              25.42 |           63865.12 |               2.12 |           67446.14
+          15320.49 |               2.10 |               0.00 |              30.12 |               2.64 |              32.42
+================== | ================== | ================== | ================== | ================== | ==================
+ 15285089.11+-141% |      1203.96+-141% |         8.47+-141% |     21301.71+-141% |          2.83+-23% |     22496.24+-141%
+[32m.[0m
+*********************************************************
+************* Testing time to find 1000 Waldos *************
+*********************************************************
+
+BENCHMARK find-waldos
+Description:
+- forceGc: false
+- regressionSlopeMetric: scriptTime
+- sampleSize: 3
+- userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36
+Metrics:
+- gcAmount: gc amount in kbytes
+- gcTime: gc time in ms
+- majorGcTime: time of major gcs in ms
+- pureScriptTime: script execution time in ms, without gc nor render
+- renderTime: render time in ms
+- scriptTime: script execution time in ms, including gc and render
+
+          gcAmount |             gcTime |        majorGcTime |     pureScriptTime |         renderTime |         scriptTime
+------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------
+           1760.54 |               8.25 |               0.00 |               0.90 |              11.33 |               1.03
+          22630.46 |               2.21 |               0.00 |              78.08 |               1.35 |              80.38
+          23288.12 |               2.13 |               0.00 |              97.11 |               1.17 |              99.33
+================== | ================== | ================== | ================== | ================== | ==================
+     15893.04+-62% |          4.20+-68% |               0.00 |         58.70+-70% |         4.62+-102% |         60.25+-70%
+[32m.[0m
+
+
+8 specs, 0 failures
+Finished in 318.898 seconds
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 passed

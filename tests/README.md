@@ -32,14 +32,14 @@
 4. Run Benchpress
 
 
-    protractor benchpress.conf.js
+    protractor protractor.conf.js
 
 5. Check the output in your console
 
 Alternatively, you can output the results to a file. See the results folder as an example.
 
 
-    protractor benchpress.conf.js > results/blaze.txt
+    protractor protractor.conf.js > results/blaze.txt
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpressRun.gif?t=1444781138300 "Benchpress output")
 
@@ -93,4 +93,4 @@ Finished in 20.571 seconds
 * `A Jasmine spec timed out. Resetting the WebDriver Control Flow.`
 
     - Consider increasing your `TIMEOUT_INTERVAL_VAR` in `tests.spec.js`.
-    - Consider increasing `defaultTimeoutInterval` in `benchpress.conf.js`.
+    - Consider increasing `defaultTimeoutInterval` in `protractor.conf.js`.

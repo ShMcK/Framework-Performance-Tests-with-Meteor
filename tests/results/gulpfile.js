@@ -5,7 +5,7 @@ var map = require('map-stream');
 //var gutil = require('gulp-util');
 
 /* Regex conditions for picking data */
-var paintCountRegex = RegExp(/^\*{13} Testing time to paint (\d+) Items \*{13}$/gm);
+//var paintCountRegex = RegExp(/^\*{13} Testing time to paint (\d+) Items \*{13}$/gm);
 var findWaldosCountRegex = RegExp(/^\*{13} Testing time to find (\d+) Waldos \*{13}$/gm);
 var dataRegex = RegExp(/^[={18} \|]+$\n(\s+(\d+\.\d+(\+\-\d+\%)?)(?: \|)?)+/gm);
 
@@ -15,6 +15,9 @@ var output = './results.md';
 gulp.task('collect', function () {
   vinyl.src(input)
     .pipe(map(function(file, cb) {
+      console.log('\n');
+      console.log(`File: ${file.basename}`);
+
       var content = fs.readFileSync(file.path, "utf8");
       var countsMatches = content.match(findWaldosCountRegex);
       var counts = trimToNumbersOnly(countsMatches);
@@ -22,13 +25,23 @@ gulp.task('collect', function () {
       var dataMatches = content.match(dataRegex);
       var data = trimResults(dataMatches);
 
-      console.log('\n');
-      console.log(`File: ${file.basename}`);
-      console.log('|       Counts |    Paint DOM | Re-Paint DOM |');
-      console.log('|--------------|--------------|--------------|');
+      paintData = [];
+      repaintData = [];
 
-      paintCounts.forEach(function(count, index) {
-        console.log(`| ${getSpaces(count)}${count} | ${getSpaces(data[index][6])}${data[index][6]} | ${getSpaces(data[index][7])}${data[index][7]} |`);
+      data.forEach(function(data, index) {
+        if (index % 2 === 0) {
+          paintData.push(data);
+        } else {
+          repaintData.push(data);
+        }
+      });
+
+      console.log('|           Counts |        Paint DOM |     Re-Paint DOM |');
+      console.log('|------------------|------------------|------------------|');
+
+      counts.forEach(function(count, index) {
+        var col = 5;
+        console.log(`| ${getSpaces(count)}${count} | ${getSpaces(paintData[index][col])}${paintData[index][col]} | ${getSpaces(repaintData[index][col])}${repaintData[index][col]} |`);
       });
 
       cb(null, file);
@@ -38,7 +51,7 @@ gulp.task('collect', function () {
 gulp.task('default', ['collect']);
 
 function getSpaces(string) {
-  return ' '.repeat(12 - string.length);
+  return ' '.repeat(16 - string.length);
 }
 
 // not efficient, but couldn't get regex captures to work
@@ -48,7 +61,7 @@ function trimToNumbersOnly (arrayOfStrings) {
   });
 }
 
-var barLength = '================== | ================== | ================== | ================== | ================== | ================== | ================== | ==================\n'.length;
+var barLength = '================== | ================== | ================== | ================== | ================== | ==================\n'.length;
 function trimResults (arrayOfStrings) {
   return arrayOfStrings
     .map(function(string) {
