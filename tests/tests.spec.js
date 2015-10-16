@@ -6,11 +6,10 @@ var benchpress = require('benchpress'),
 require('events').EventEmitter.prototype._maxListeners = 25;
 
 var TEST = {
-  SAMPLE_SIZE: 3, // number of times the test runs
+  SAMPLE_SIZE: 10, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000], // intervals // , 2000, 3000, 4000, 5000
-  TIMEOUT_INTERVAL_VAR: 1000, // increase this if you're getting a timeout error
-  USE_RESET: false // protractors clicks reset before running a test
+  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals // 4000, 5000
+  TIMEOUT_INTERVAL_VAR: 1000 // increase this if you're getting a timeout error
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = TEST.COUNTS[TEST.COUNTS.length - 1] * TEST.TIMEOUT_INTERVAL_VAR;
@@ -32,9 +31,7 @@ describe('Performance Tests', function () {
       await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'load-rows',
-        prepare: function () {
-          prepareTest();
-        },
+        prepare: function () {},
         execute: function () {
           $('#count-' + count).click();
           return $('#run').click();
@@ -52,7 +49,6 @@ describe('Performance Tests', function () {
       runner.sample({
         id: 'find-waldos',
         prepare: function () {
-          prepareTest();
           $('#count-' + count).click();
           return $('#run').click();
         },
@@ -63,12 +59,6 @@ describe('Performance Tests', function () {
       addTitle('Testing time to find ' + count + ' Waldos');
       //browser.close();
     }));
-  }
-
-  function prepareTest() {
-    if (TEST.USE_RESET) {
-      return $('#reset').click();
-    }
   }
 
   // indicate separation between tests / counts

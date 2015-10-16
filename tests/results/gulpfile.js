@@ -64,6 +64,7 @@ function trimToNumbersOnly (arrayOfStrings) {
 }
 
 var barLength = '================== | ================== | ================== | ================== | ================== | ==================\n'.length;
+
 function trimResults (arrayOfStrings) {
   return arrayOfStrings
     .map(function(string) {
