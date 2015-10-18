@@ -3,64 +3,71 @@ var data = [{
   version: '2.1.3',
   color: '27, 133, 184',
   data: {
-    paint: [26.85, 185.80, 974.39, 2128.02],
-    repaint: [4.11, 15.22, 18.69, 25.87]
+    paint: [28, 373, 1683, 3709, 10000],
+    repaint: [5, 14, 52, 19, 112]
   }
 }, {
   label: 'React',
   version: '0.13.3',
   color: '90, 82, 85',
   data: {
-    paint: [6.49, 32.50, 137.96, 267.01, 520.65, 767.20, 1022.30, 1916.60],
-    repaint: [5.71, 32.32, 176.10, 316.31, 1465.48, 2050.35, 1831.76, 3096.76]
+    paint: [6, 32, 137, 267, 520],
+    repaint: [5, 32, 176, 316, 1465]
   }
 }, {
   label: 'Angular 1',
   version: '1.4.7',
   color: '174, 90, 65',
   data: {
-    paint: [9.08, 20.48, 68.54, 123.45],
-    repaint: [1.54, 2.64, 5.04, 16.77]
+    paint: [9, 20, 68, 123, 10000],
+    repaint: [1, 2, 5, 16, 10000]
   }
 }, {
   label: 'Angular 2',
   version: 'alpha-40',
   color: '195, 203, 113',
   data: {
-    paint: [8.28, 24.91, 121.63, 262.20, 742.12, 1339.14, 2211.64, 2887.15],
-    repaint: [1.26, 2.32, 5.23, 9.56, 19.00, 27.28, 35.34, 43.14]
+    paint: [7, 25, 126, 271, 739],
+    repaint: [1, 2, 5, 10, 19]
   }
 }];
 
 // chartData
 var chartData = {
   paint: {
-    labels: ["100", "1,000", "5,000", "10,000", "20,000", "30,000", "40,000", "50,000"],
+    labels: ["100", "1,000", "5,000", "10,000", "20,000"],
     datasets: []
   },
   repaint: {
-    labels: ["100", "1,000", "5,000", "10,000", "20,000", "30,000", "40,000", "50,000"],
+    labels: ["100", "1,000", "5,000", "10,000", "20,000"],
     datasets: []
   }
 };
 
 data.forEach(function (sample) {
-  var chartObject = {
+  var paintObject = {
     label: sample.label,
     fillColor: "rgba(" + sample.color + ",0.2)",
     strokeColor: "rgba(" + sample.color + ",1)",
     pointColor: "rgba(" + sample.color + ",1)",
     pointStrokeColor: "#fff",
     pointHighlightFill: "#fff",
-    pointHighlightStroke: "rgba(" + sample.color + ",1)"
+    pointHighlightStroke: "rgba(" + sample.color + ",1)",
+    data: sample.data.paint
+  };
+  var repaintObject = {
+    label: sample.label,
+    fillColor: "rgba(" + sample.color + ",0.2)",
+    strokeColor: "rgba(" + sample.color + ",1)",
+    pointColor: "rgba(" + sample.color + ",1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(" + sample.color + ",1)",
+    data: sample.data.repaint
   };
   // paint chart
-  var paintObject = chartObject;
-  paintObject.data = sample.data.paint;
   chartData.paint.datasets.push(paintObject);
   // repaint chart
-  var repaintObject = chartObject;
-  repaintObject.data = sample.data.repaint;
   chartData.repaint.datasets.push(repaintObject);
 
 });
@@ -141,14 +148,14 @@ var defaults = function () {
 //  var renderChart = new Chart(loadingChart).Bar(loadingData, {responsive: true});
 
 // adjust scale to fit data
-var options2 = new defaults();
-options2.scaleOverride = true;
-options2.scaleSteps = 11;
-options2.scaleStepWidth = 1000;
-options2.scaleStartValue = 0;
+var custom = new defaults();
+custom.scaleOverride = true;
+custom.scaleSteps = 11;
+custom.scaleStepWidth = 500;
+custom.scaleStartValue = 0;
 
 var paintChart = document.getElementById("renderPaintChart").getContext("2d");
-var renderChart2 = new Chart(paintChart).Line(chartData.paint, options2);
+var renderChart2 = new Chart(paintChart).Line(chartData.paint, custom);
 
 var repaintChart = document.getElementById("renderRepaintChart").getContext("2d");
-var renderChart3 = new Chart(repaintChart).Line(chartData.repaint, defaults());
+var renderChart3 = new Chart(repaintChart).Line(chartData.repaint, custom);

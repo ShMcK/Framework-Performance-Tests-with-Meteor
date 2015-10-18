@@ -8,7 +8,7 @@ require('events').EventEmitter.prototype._maxListeners = 25;
 var TEST = {
   SAMPLE_SIZE: 10, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
-  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals // 4000, 5000
+  COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals
   TIMEOUT_INTERVAL_VAR: 1000 // increase this if you're getting a timeout error
 };
 
@@ -67,9 +67,6 @@ describe('Performance Tests', function () {
     console.log('************* ' + message + ' *************');
     console.log('*********************************************************\n');
   }
-
-  // additional settings
-
 
   // loop over counts and run tests
   for (var x = 0; x < TEST.COUNTS.length; x++) {

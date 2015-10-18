@@ -39,7 +39,7 @@
 Alternatively, you can output the results to a file. See the results folder as an example.
 
 
-    protractor protractor.conf.js > results/blaze.txt
+    protractor protractor.conf.js > results/completed/blaze.txt
 
 ![](http://cdn2.hubspot.net/hubfs/520701/Blog/shmck/benchpressRun.gif?t=1444781138300 "Benchpress output")
 
