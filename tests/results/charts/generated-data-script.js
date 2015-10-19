@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 var data = require('./generated-data.js');
@@ -159,3 +160,63 @@ var renderChart3 = new Chart(repaintChart).Line(chartData.repaint, custom);
 
 //var reactNg2Chart = document.getElementById('renderReactNg2Chart').getContext('2d');
 //var renderReactNg2Chart = new Chart(reactNg2Chart).Line(ng2ReactData, custom);
+},{"./generated-data.js":2}],2:[function(require,module,exports){
+module.exports = [
+{ label: 'angular-1',
+  color: '27, 133, 184',
+  data: 
+   { paint: [ '9.08', '20.48', '68.54', '123.45', '10000' ],
+     find: [ '1.54', '2.64', '5.04', '16.77', '10000' ] } }
+,
+{ label: 'angular-2',
+  color: '90, 82, 85',
+  data: 
+   { paint: 
+      [ '7.58',
+        '25.95',
+        '126.10',
+        '271.28',
+        '739.21',
+        '1342.24',
+        '2065.34',
+        '2928.81' ],
+     find: 
+      [ '1.81',
+        '2.00',
+        '5.09',
+        '10.42',
+        '19.58',
+        '26.03',
+        '37.29',
+        '44.78' ] } }
+,
+{ label: 'blaze',
+  color: '174, 90, 65',
+  data: 
+   { paint: [ '28.06', '373.58', '1683.08', '3709.87', '25372.87' ],
+     find: [ '5.22', '14.42', '52.18', '19.21', '112.09' ] } }
+,
+{ label: 'react',
+  color: '195, 203, 113',
+  data: 
+   { paint: 
+      [ '6.49',
+        '32.50',
+        '137.96',
+        '267.01',
+        '520.65',
+        '767.20',
+        '1022.30',
+        '1916.60' ],
+     find: 
+      [ '5.71',
+        '32.32',
+        '176.10',
+        '316.31',
+        '1465.48',
+        '2050.35',
+        '1831.76',
+        '3096.76' ] } }
+];
+
+},{}]},{},[1]);

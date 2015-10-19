@@ -20,10 +20,8 @@
     "browserify": "^11.2.0",
     "fs": "0.0.2",
     "gulp": "^3.9.0",
-    "gulp-util": "^3.0.6",
     "map-stream": "0.0.6",
     "readline": "^1.1.0",
-    "run-sequence": "^1.1.4",
     "vinyl-fs": "^2.1.1"
   }
 }

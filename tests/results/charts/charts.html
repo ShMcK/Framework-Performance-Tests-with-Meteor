@@ -4,12 +4,12 @@
 </head>
 <body>
 
-<div style="width: 80%; margin: 0 auto; text-align: center;">
+<div class="shmck-chart">
   <h5>Generate Rows: Script Times</h5>
 
   <p><i>time (ms) / # of items</i></p>
 
-  <canvas id="renderPaintChart" width="600" height="400"></canvas>
+  <canvas id="renderPaintChart"></canvas>
   <div class="shmck-chart--legend"></div>
 </div>
 
@@ -21,13 +21,13 @@
   <div class="shmck-chart--legend"></div>
 </div>
 
-<div class="shmck-chart">
-  <h5>Changes: Script Time</h5>
+<!--<div class="shmck-chart">-->
+  <!--<h5>Changes: Script Time</h5>-->
 
-  <p><i>time (ms) / # of items</i></p>
-  <canvas id="renderReactNg2Chart"></canvas>
-  <div class="shmck-chart--legend"></div>
-</div>
+  <!--<p><i>time (ms) / # of items</i></p>-->
+  <!--<canvas id="renderReactNg2Chart"></canvas>-->
+  <!--<div class="shmck-chart--legend"></div>-->
+<!--</div>-->
 
 <style>
   .shmck-chart {
@@ -50,7 +50,7 @@
   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-<script src="./charts.js"></script>
+<script src="./generated-data-script.js"></script>
 </body>
 
 </html>

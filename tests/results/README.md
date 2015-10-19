@@ -29,7 +29,12 @@ Example output in `results.md`:
 
 ##### Create a chart
 
-    -- unfinished --
+Partially incomplete.
+
+    gulp chart > charts/data.js  // rough version
+    browserify charts/charts.js
+    
+open `charts.html`.
     
 
       
