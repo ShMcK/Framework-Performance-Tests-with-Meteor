@@ -64,7 +64,7 @@ module.exports = [
   },
   {
     "label": "Angular 2",
-    "version": "alpha-40",
+    "version": "alpha-42",
     "color": "195, 203, 113",
     "data": {
       "paint": [

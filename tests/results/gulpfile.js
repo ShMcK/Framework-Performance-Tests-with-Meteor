@@ -1,10 +1,9 @@
-var gulp = require('gulp');
-var vinyl = require('vinyl-fs');
-var fs = require('fs');
-var map = require('map-stream');
-//var gutil = require('gulp-util');
-var readline = require('readline');
-
+var gulp = require('gulp'),
+  vinyl = require('vinyl-fs'),
+  fs = require('fs'),
+  map = require('map-stream'),
+  runSequence = require('run-sequence').use(gulp),
+  readline = require('readline');
 
 /* Regex conditions for picking data */
 var paintRegex = RegExp(/^\*{13} Testing time to paint (\d+) Items \*{13}$/gm);
@@ -22,8 +21,8 @@ var measure = {
   render: 6
 };
 
-// track file index
 var fileIndex = 0;
+var colors = ['27, 133, 184', '90, 82, 85', '174, 90, 65', '195, 203, 113'];
 var overallData = [];
 
 gulp.task('collect', function () {
@@ -38,8 +37,6 @@ gulp.task('collect', function () {
         paint: [],
         find: []
       };
-      var collectedPaint = [];
-      var collectedFind = [];
 
       var rl = readline.createInterface({
         input: fs.createReadStream(file.path, 'utf8')
@@ -83,7 +80,7 @@ gulp.task('collect', function () {
       });
 
       // print rows of data from recorder
-      rl.on('close', function() {
+      rl.on('close', function () {
         console.log('\n');
         console.log(`File: ${file.basename}`);
         console.log('\n');
@@ -92,33 +89,34 @@ gulp.task('collect', function () {
         console.log('| ----------------:| ----------------:| ----------------:|');
 
         recorder.counts.forEach(function (count, index) {
-          // see measures {script, pureScript, render}
-          var script = measure.script;
-          var totalPaint = parseInt(recorder.paint[index][script]);
-          collectedPaint.push(totalPaint);
-          var totalFind = parseInt(recorder.find[index][script]);
-          collectedFind.push(collectedFind);
+          var totalPaint = parseInt(recorder.paint[index][measure.script]);
+          var totalFind = parseInt(recorder.find[index][measure.script]);
           console.log(`| ${getSpaces(count)}${count} | ${getSpaces(totalPaint)}${totalPaint} | ${getSpaces(totalFind)}${totalFind} |`);
         });
-      });
 
-      overallData.push({
-        file: file.basename.substr(0, input.lastIndexOf('.')),
-        paint: collectedPaint,
-        find: collectedFind
+        overallData.push({
+          label: file.basename.substr(0, file.basename.lastIndexOf('.')),
+          color: colors[fileIndex],
+          data: {
+            paint: recorder.paint.map(mapScriptData),
+            find: recorder.find.map(mapScriptData)
+          }
+        });
       });
-      console.log(overallData);
-
       fileIndex += 1;
       cb(null, file);
     }));
+
 });
 
-gulp.task('charts', ['collect'], function () {
+gulp.task('chart', function (cb) {
   console.log(overallData);
+  return cb;
 });
 
-gulp.task('default', ['collect']);
+gulp.task('default', function(cb) {
+ runSequence('collect', 'chart', cb);
+});
 
 // adjust spaces in output
 function getSpaces(number) {
@@ -138,4 +136,6 @@ function trimResults(string) {
   });
 }
 
-
+function mapScriptData(item) {
+  return item[measure.script];
+}
