@@ -22,6 +22,10 @@ var runner = new benchpress.Runner([
   benchpress.bind(benchpress.Options.FORCE_GC).toValue(true)
 ]);
 
+afterEach(async (function() {
+  await (global.browser.quit());
+}));
+
 describe('Performance Tests', function () {
 
   // measure the time it takes to load rows
@@ -31,11 +35,10 @@ describe('Performance Tests', function () {
       await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'load-rows',
-        prepare: function () {},
-        execute: function () {
-          $('#count-' + count).click();
-          return $('#run').click();
-        }
+        execute: async(function () {
+          await ($('#count-' + count).click());
+          return await ($('#run').click());
+        })
       }).then(done, done.fail);
       addTitle('Testing time to paint ' + count * 10 + ' Items');
     }));
@@ -48,13 +51,13 @@ describe('Performance Tests', function () {
       await (browser.get(TEST.ADDRESS));
       runner.sample({
         id: 'find-waldos',
-        prepare: function () {
-          $('#count-' + count).click();
-          return $('#run').click();
-        },
-        execute: function () {
-          return $('#find-waldos').click();
-        }
+        prepare: async(function () {
+          await ($('#count-' + count).click());
+          return await ($('#run').click());
+        }),
+        execute: async(function () {
+          return await ($('#find-waldos').click());
+        })
       }).then(done, done.fail);
       addTitle('Testing time to find ' + count + ' Waldos');
       //browser.close();

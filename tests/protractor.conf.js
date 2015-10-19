@@ -30,7 +30,6 @@ exports.config = {
       global.$$ = global.browser.$$;
     });
     afterEach(function () {
-      global.browser.quit();
       global.browser = originalBrowser;
     });
   }
