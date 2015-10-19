@@ -6,7 +6,7 @@ var benchpress = require('benchpress'),
 require('events').EventEmitter.prototype._maxListeners = 25;
 
 var TEST = {
-  SAMPLE_SIZE: 10, // number of times the test runs
+  SAMPLE_SIZE: 5, // number of times the test runs
   ADDRESS: 'http://localhost:3000/',
   COUNTS: [10, 100, 500, 1000, 2000, 3000, 4000, 5000], // intervals
   TIMEOUT_INTERVAL_VAR: 1000 // increase this if you're getting a timeout error

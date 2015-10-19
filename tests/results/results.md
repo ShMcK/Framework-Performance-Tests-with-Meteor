@@ -1,3 +1,11 @@
+Timing.js Measures
+
+Blaze: 978
+React: 1129
+Angular 1: 1185
+Angular 2: 1466
+
+
 File: angular-1.txt
 
 

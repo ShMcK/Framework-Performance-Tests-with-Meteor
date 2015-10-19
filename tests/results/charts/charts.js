@@ -1,36 +1,91 @@
-var data = [{
-  label: 'Blaze',
-  version: '2.1.3',
-  color: '27, 133, 184',
-  data: {
-    paint: [28, 373, 1683, 3709, 10000],
-    repaint: [5, 14, 52, 19, 112]
+'use strict';
+
+var data = [
+  {
+    "label": "Blaze",
+    "version": "2.1.3",
+    "color": "27, 133, 184",
+    "data": {
+      "paint": [
+        28,
+        373,
+        1683,
+        3709,
+        10000
+      ],
+      "repaint": [
+        5,
+        14,
+        52,
+        19,
+        112
+      ]
+    }
+  },
+  {
+    "label": "React",
+    "version": "0.13.3",
+    "color": "90, 82, 85",
+    "data": {
+      "paint": [
+        6,
+        32,
+        137,
+        267,
+        520
+      ],
+      "repaint": [
+        5,
+        32,
+        176,
+        316,
+        1465
+      ]
+    }
+  },
+  {
+    "label": "Angular 1",
+    "version": "1.4.7",
+    "color": "174, 90, 65",
+    "data": {
+      "paint": [
+        9,
+        20,
+        68,
+        123,
+        10000
+      ],
+      "repaint": [
+        1,
+        2,
+        5,
+        16,
+        10000
+      ]
+    }
+  },
+  {
+    "label": "Angular 2",
+    "version": "alpha-40",
+    "color": "195, 203, 113",
+    "data": {
+      "paint": [
+        7,
+        25,
+        126,
+        271,
+        739
+      ],
+      "repaint": [
+        1,
+        2,
+        5,
+        10,
+        19
+      ]
+    }
   }
-}, {
-  label: 'React',
-  version: '0.13.3',
-  color: '90, 82, 85',
-  data: {
-    paint: [6, 32, 137, 267, 520],
-    repaint: [5, 32, 176, 316, 1465]
-  }
-}, {
-  label: 'Angular 1',
-  version: '1.4.7',
-  color: '174, 90, 65',
-  data: {
-    paint: [9, 20, 68, 123, 10000],
-    repaint: [1, 2, 5, 16, 10000]
-  }
-}, {
-  label: 'Angular 2',
-  version: 'alpha-40',
-  color: '195, 203, 113',
-  data: {
-    paint: [7, 25, 126, 271, 739],
-    repaint: [1, 2, 5, 10, 19]
-  }
-}];
+];
 
 // chartData
 var chartData = {
@@ -43,6 +98,29 @@ var chartData = {
     datasets: []
   }
 };
+
+//var ng2ReactData = {
+//  labels: ["10,000", "20,000", "30,000", "40,000", "50,000"],
+//  datasets: [{
+//    label: 'React 0.13.3',
+//    fillColor: "rgba(90, 82, 85, 0.2)",
+//    strokeColor: "rgba(90, 82, 85, 1)",
+//    pointColor: "rgba(90, 82, 85, 1)",
+//    pointStrokeColor: "#fff",
+//    pointHighlightFill: "#fff",
+//    pointHighlightStroke: "rgba(90, 82, 85, 1)",
+//    data: [316, 1465, 2050, 1831, 3096]
+//  }, {
+//    label: 'Angular 2.0.0 alpha-42',
+//    fillColor: "rgba(174, 90, 65, 0.2)",
+//    strokeColor: "rgba(174, 90, 65, 1)",
+//    pointColor: "rgba(174, 90, 65, 1)",
+//    pointStrokeColor: "#fff",
+//    pointHighlightFill: "#fff",
+//    pointHighlightStroke: "rgba(174, 90, 65, 1)",
+//    data: [10, 19, 26, 37, 44]
+//  }]
+//};
 
 data.forEach(function (sample) {
   var paintObject = {
@@ -75,7 +153,7 @@ data.forEach(function (sample) {
 // generate legends
 var legends = document.getElementsByClassName('shmck-chart--legend');
 for (var i = 0; i < legends.length; ++i) {
-  element = legends[i];
+  var element = legends[i];
   data.forEach(function (field) {
     // add colored legend box
     var coloredBox = document.createElement('span');
@@ -159,3 +237,6 @@ var renderChart2 = new Chart(paintChart).Line(chartData.paint, custom);
 
 var repaintChart = document.getElementById("renderRepaintChart").getContext("2d");
 var renderChart3 = new Chart(repaintChart).Line(chartData.repaint, custom);
+
+//var reactNg2Chart = document.getElementById('renderReactNg2Chart').getContext('2d');
+//var renderReactNg2Chart = new Chart(reactNg2Chart).Line(ng2ReactData, custom);

@@ -3,3 +3,4 @@ tests/node_modules
 tests/results/node_modules
 tests/custom.conf.js
 tests/custom.spec.js
+tests/results/after-fix/

@@ -27,6 +27,9 @@ var fileIndex = 0;
 var overallData = [];
 
 gulp.task('collect', function () {
+  // reset overallData
+  overallData = [];
+
   vinyl.src(input)
     .pipe(map(function (file, cb) {
 
@@ -35,6 +38,8 @@ gulp.task('collect', function () {
         paint: [],
         find: []
       };
+      var collectedPaint = [];
+      var collectedFind = [];
 
       var rl = readline.createInterface({
         input: fs.createReadStream(file.path, 'utf8')
@@ -86,9 +91,6 @@ gulp.task('collect', function () {
         console.log('|           Counts |        Paint DOM |  Find / Re-Paint |');
         console.log('| ----------------:| ----------------:| ----------------:|');
 
-        var collectedPaint = [];
-        var collectedFind = [];
-
         recorder.counts.forEach(function (count, index) {
           // see measures {script, pureScript, render}
           var script = measure.script;
@@ -98,17 +100,22 @@ gulp.task('collect', function () {
           collectedFind.push(collectedFind);
           console.log(`| ${getSpaces(count)}${count} | ${getSpaces(totalPaint)}${totalPaint} | ${getSpaces(totalFind)}${totalFind} |`);
         });
-
-        overallData.push({
-          file: file.basename.substr(0, input.lastIndexOf('.')),
-          paint: collectedPaint,
-          find: collectedFind
-        });
       });
+
+      overallData.push({
+        file: file.basename.substr(0, input.lastIndexOf('.')),
+        paint: collectedPaint,
+        find: collectedFind
+      });
+      console.log(overallData);
 
       fileIndex += 1;
       cb(null, file);
     }));
+});
+
+gulp.task('charts', ['collect'], function () {
+  console.log(overallData);
 });
 
 gulp.task('default', ['collect']);
@@ -123,6 +130,7 @@ function trimToNumbersOnly(string) {
   return string.replace(/\D/g, '');
 }
 
+// remove white space around data
 function trimResults(string) {
   var array = string.split('|');
   return array.map(function (string) {

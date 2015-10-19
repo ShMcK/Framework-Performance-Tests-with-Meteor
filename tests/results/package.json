@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ShMcK/Framework-Performance-Tests-with-Meteor#readme",
   "devDependencies": {
+    "browserify": "^11.2.0",
     "fs": "0.0.2",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.6",

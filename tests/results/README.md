@@ -27,4 +27,9 @@ Example output in `results.md`:
     |              500 |   11021.64+-140% |       27.02+-66% |
     |             1000 |   22496.24+-141% |       60.25+-70% |
 
+##### Create a chart
+
+    -- unfinished --
+    
+
       
