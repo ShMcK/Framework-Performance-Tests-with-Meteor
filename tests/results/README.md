@@ -29,9 +29,13 @@ Example output in `results.md`:
 
 ##### Create a chart
 
+Setup: 
+
+    npm install -g browserify
+
 Partially incomplete.
 
-    gulp chart > charts/generated-data.js  // rough version
+    gulp chart > charts/generated-data.js
     browserify charts/charts.js > charts/generated-data-script.js
     
 open `charts/charts.html`.
