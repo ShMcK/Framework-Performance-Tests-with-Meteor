@@ -31,10 +31,10 @@ Example output in `results.md`:
 
 Partially incomplete.
 
-    gulp chart > charts/data.js  // rough version
-    browserify charts/charts.js
+    gulp chart > charts/generated-data.js  // rough version
+    browserify charts/charts.js > charts/generated-data-script.js
     
-open `charts.html`.
+open `charts/charts.html`.
     
 
       
